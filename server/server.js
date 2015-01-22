@@ -5,11 +5,9 @@ var mongoose = require('mongoose');
 var app = express();
 
 // db setup
-var database = 'mongodb://localhost/oceanoracles-dev';
-// if (process.env.NODE_ENV === 'production') {
-//   database = 'mongodb://'; // INSERT MONGOLAB URI
-// }
-mongoose.connect(database);
+var pEnv = process.env;
+var devDb = 'mongodb://localhost/oceanoracles-dev';
+mongoose.connect(pEnv.MONGOLAB_URI || pEnv.MONGOHQ_URL  || devDb);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error:'));
 db.on('open', function() { console.log('mongo hooked'); });
