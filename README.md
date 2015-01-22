@@ -1,12 +1,6 @@
-# Project Name
+# OceanOracle
 
-> Pithy project description
-
-## Team
-
-  - __Product Owner__: Raghuvir Kasturi
-  - __Scrum Master__: Eric Kennedy
-  - __Development Team Members__: Clark Feusier
+> Curated bites for self-starters – 5 steps to lerning
 
 ## Table of Contents
 
@@ -14,38 +8,49 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
+1. [Roadmap](#roadmap)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
 
+<!--
 > Some usage instructions
+-->
 
 ## Requirements
 
+<!--
 - Node 0.10.x
 - Redis 2.6.x
 - Postgresql 9.1.x
 - etc
 - etc
+-->
 
 ## Development
 
 ### Installing Dependencies
 
+<!--
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
+npm install -g bower
 npm install
 bower install
 ```
+-->
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/OceanOracles/OceanOracles/issues)
 
+## Team
+
+  - __Product Owner__: Raghuvir Kasturi
+  - __Scrum Master__: Eric Kennedy
+  - __Development Team Members__: Clark Feusier
 
 ## Contributing
 
