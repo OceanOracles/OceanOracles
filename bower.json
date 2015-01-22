@@ -1,0 +1,17 @@
+{
+  "name": "oceanoracles",
+  "version": "0.0.0",
+  "authors": ["Raghuvir Kasturi", "Eric Kennedy", "Clark Feusier"],
+  "license": "MIT",
+  "ignore": [
+  "**/.*",
+  "node_modules",
+  "bower_components",
+  "client/lib"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0",
+    "backbone": "1.1.2"
+  }
+}
