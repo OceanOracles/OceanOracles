@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/oceanoracles/oceanoracles.png?label=ready&title=Ready)](https://waffle.io/oceanoracles/oceanoracles)
 # OceanOracle
 
 > Curated bites for self-starters – 5 steps to lerning
