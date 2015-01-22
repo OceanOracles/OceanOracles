@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "description": "",
   "main": "app.js",
-  "author": "lern",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "author": "lernhow",
   "contributors": ["Raghuvir Kasturi", "Eric Kennedy", "Clark Feusier"],
-  "license": "MIT",
+  "license": "Copyright 2015, Lernhow, all rights reserved.",
   "dependencies": {
     "bcrypt-nodejs" : "0.0.3",
     "body-parser": "^1.4.3",
@@ -15,7 +18,8 @@
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
     "bluebird": "^2.8.2",
-    "request": "^2.36.0"
+    "request": "^2.36.0",
+    "bower": "0.6.x"
   },
   "devDependencies": {
     "browser-sync": "^1.5.7",
@@ -29,5 +33,12 @@
     "jshint-stylish": "^0.2.0",
     "mocha": "^1.20.1",
     "chai": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OceanOracles/OceanOracles"
   }
 }
