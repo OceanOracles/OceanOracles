@@ -7,19 +7,25 @@
     "start": "node server/server.js"
   },
   "author": "lernhow",
-  "contributors": ["Raghuvir Kasturi", "Eric Kennedy", "Clark Feusier"],
+  "contributors": [
+    "Raghuvir Kasturi",
+    "Eric Kennedy",
+    "Clark Feusier"
+  ],
   "license": "Copyright 2015, Lernhow, all rights reserved.",
   "dependencies": {
-    "bcrypt-nodejs" : "0.0.3",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^2.8.2",
     "body-parser": "^1.4.3",
+    "bower": "0.6.x",
+    "ejs": "^2.2.2",
     "express": "^4.4.5",
+    "express-partials": "^0.3.0",
     "mongoose": "^3.8.12",
     "morgan": "^1.1.1",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
-    "bluebird": "^2.8.2",
-    "request": "^2.36.0",
-    "bower": "0.6.x"
+    "request": "^2.36.0"
   },
   "devDependencies": {
     "browser-sync": "^1.5.7",
