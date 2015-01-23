@@ -13,7 +13,7 @@ module.exports = function (app, express) {
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
-  app.use(express.static(path.join(__dirname, '/../../client')));
+  app.use(express.static(path.join(__dirname, '/../../client/public')));
   app.use('/api/users', userRouter);
   // app.use('/api/guides', guideRouter);
 
