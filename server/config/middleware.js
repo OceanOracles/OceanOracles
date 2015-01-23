@@ -5,7 +5,7 @@ var partials = require('express-partials');
 var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
-  // var userRouter = express.Router();
+  var userRouter = express.Router();
   // var guideRouter = express.Router();
 
   // view setup
@@ -26,7 +26,7 @@ module.exports = function (app, express) {
   app.use(express.static(path.join(__dirname, '/../../client')));
 
   // api routers
-  // app.use('/api/users', userRouter);
+  app.use('/api/users', userRouter);
   // app.use('/api/guides', guideRouter);
 
   // error handlers
@@ -34,7 +34,7 @@ module.exports = function (app, express) {
   app.use(helpers.errorHandler);
 
   // inject routers into respective route files
-  // require('../users/userRoutes.js')(userRouter);
+  require('../users/userRoutes.js')(userRouter);
   // require('../guides/guideRoutes.js')(guideRouter);
 
 };
