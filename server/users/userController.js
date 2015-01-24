@@ -58,7 +58,19 @@ module.exports = {
       var findUser = Q.nbind(User.findOne, User);
 
       findUser({ username: user.username }).then(function(foundUser) {
-        foundUser ? res.send(200) : res.send(401);
+        if (foundUser) {
+          var safeUser = {
+            _id: foundUser._id,
+            username: foundUser.username,
+            email: foundUser.email,
+            updatedAt: foundUser.updatedAt,
+            createdAt: foundUser.createdAt
+          };
+          req.user = safeUser;
+          next();
+        } else {
+          res.send(401);
+        }
       }).fail(function(err) {
         next(err);
       });
