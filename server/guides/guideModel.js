@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema
+var Schema = mongoose.Schema;
 
 var GuideSchema = new Schema({
   title: { type: String, required: true },
-  user: { type: Schema.ObjectId, ref: 'User' },
-  created: { type: Date, default: Date.now },
-  update: { type: Date }
+  userId: { type: Schema.ObjectId, ref: 'users' },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Guide', GuideSchema)
+module.exports = mongoose.model('guides', GuideSchema)
