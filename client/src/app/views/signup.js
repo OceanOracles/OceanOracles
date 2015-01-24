@@ -1,4 +1,4 @@
-window.HomeView = Backbone.View.extend({
+window.SignupView = Backbone.View.extend({
   initialize: function() {
     this.render();
   },

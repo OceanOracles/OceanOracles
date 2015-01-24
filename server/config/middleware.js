@@ -20,4 +20,10 @@ module.exports = function (app, express) {
   // inject routers into respective route files
   require('../users/userRoutes.js')(userRouter);
   // require('../guides/guideRoutes.js')(guideRouter);
+
+  app.get('/:calledPage', function(req, res) {
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
+    console.log('retrieving page: ' + req.params.calledPage);
+    console.log('I didn\'t touch users!');
+  });
 };

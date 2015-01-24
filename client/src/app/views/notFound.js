@@ -1,4 +1,4 @@
-window.HomeView = Backbone.View.extend({
+window.NotFoundView = Backbone.View.extend({
   initialize: function() {
     this.render();
   },
