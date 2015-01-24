@@ -1,16 +1,13 @@
-'use strict';
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var StepSchema = new Schema({
-  title: { type: String, required: true },
+  stepNum: { type: Number, required: true },
   content: { type: String, required: true },
-  user: { type: Schema.ObjectId, ref: 'User' },
-  guide: { type: Schema.ObjectId, ref: 'Guide' },
-  created: { type: Date, default: Date.now },
-  update: { type: Date }
-
+  userId: { type: Schema.ObjectId, ref: 'users' },
+  guideId: { type: Schema.ObjectId, ref: 'guides' },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Step', StepSchema);
+module.exports = mongoose.model('steps', StepSchema);
