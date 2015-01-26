@@ -26,20 +26,39 @@ module.exports = {
     });
   },
 
-  // findGuide: function(req, res, next, guideId){
+  findGuide: function(req, res, next, guideId) {
+    Guide.findOne({ _id: guideId }, function(err, guide) {
+      if (guide) {
+        req.guide = guide;
+        next();
+      } else if (err) {
+        next(err);
+      } else {
+        next(new Error("No Guide with that Id"));
+      }
+    });
+  },
 
-  // },
+  showGuide: function(req, res) {
+    res.json(req.guide);
+  },
 
-  // showGuide: function(req, res, next){
+  editGuide: function(req, res, next) {
+    var id = req.guide._id;
+    var newGuide = { title: req.body.title, updatedAt: Date.now() };
+    Guide.findByIdAndUpdate(id, newGuide, function(err, updatedGuide) {
+      err ? next(err) : res.send(updatedGuide);
+    });
+  },
 
-  // },
-
-  // editGuide: function(req, res, next){
-
-  // },
-
-  // deleteGuide: function(req, res, next){
-
-  // }
+  deleteGuide: function(req, res, next) {
+    if (''+req.user._id === ''+req.guide.userId) {
+      Guide.findByIdAndRemove(req.guide._id, function(err, result) {
+        result ? res.status(204).send() : next(new Error("No Guide with that Id"));
+      });
+    } else {
+      next(new Error("User not authorized to delete this Guide"));
+    }
+  }
 
 };
