@@ -1,3 +1,5 @@
+var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView'];
+
 var LernhowRouter = Backbone.Router.extend({
   routes: {
     '': 'index',
@@ -25,7 +27,7 @@ var LernhowRouter = Backbone.Router.extend({
   }
 });
 
-utils.loadTemplates(['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView'], function() {
-  var app = new LernhowRouter();
+templateUtils.loadTemplates(LernhowTemplates, function() {
+  new LernhowRouter();
   Backbone.history.start({ pushState: true });
 });

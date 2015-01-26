@@ -1,19 +1,43 @@
-window.utils = {
+window.templateUtils = utils = {
 
-  loadTemplates: function(views, callback) {
-    var deferreds = [];
+  loadTemplates: function(views, cb) {
+    var tasks = [];
+    utils.queueJobs(views, tasks);
+    $.when.apply(null, tasks).done(cb);
+  },
 
-    $.each(views, function(index, view) {
-      if (window[view]) {
-        deferreds.push($.get('app/templates/' + view + '.html', function(data) {
-          window[view].prototype.template = _.template(data);
-        }));
-      } else {
-        console.log(view + " not found");
-      }
+  queueJobs: function(views, tasks) {
+    _.each(views, function(view) { utils.setTasks(view, tasks) });
+  },
 
+  setTasks: function(view, tasks) {
+    if (window[view]) {
+      tasks.push(utils.tempify(view, utils.getView(view)));
+    } else {
+      utils.log(view);
+    }
+  },
+
+  tempify: function(view, temp) {
+    return utils.getTemplate(temp, function(data) {
+      utils.setTemplate(view, data);
     });
+  },
 
-    $.when.apply(null, deferreds).done(callback);
+  log: function(view) {
+    console.log(view + " not found");
+  },
+
+  getView: function(view) {
+    return 'app/templates/' + view + '.html';
+  },
+
+  getTemplate: function(temp, cb) {
+    return $.get(temp, cb);
+  },
+
+  setTemplate: function(view, temp) {
+    window[view].prototype.template = _.template(temp);
   }
+
 };
