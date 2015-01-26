@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   app.route('/:guideId')
     .get(guideController.showGuide)
-      .put(auth.checkAuth, guideController.editGuide)
-      .delete(auth.checkAuth, guideController.deleteGuide);
+      .put(auth.checkAuth, guideController.isGuideCreator, guideController.editGuide)
+      .delete(auth.checkAuth, guideController.isGuideCreator, guideController.deleteGuide);
 
 };
