@@ -44,21 +44,27 @@ module.exports = {
   },
 
   editGuide: function(req, res, next) {
-    var id = req.guide._id;
-    var newGuide = { title: req.body.title, updatedAt: Date.now() };
-    Guide.findByIdAndUpdate(id, newGuide, function(err, updatedGuide) {
-      err ? next(err) : res.send(updatedGuide);
+    var errMes = "User not authorized to delete this Guide";
+    module.exports.isGuideCreator(req, next, errMes, function() {
+      var newGuide = { title: req.body.title, updatedAt: Date.now() };
+      var id = req.guide._id;
+      Guide.findByIdAndUpdate(id, newGuide, function(err, updatedGuide) {
+        err ? next(err) : res.send(updatedGuide);
+      });
     });
   },
 
   deleteGuide: function(req, res, next) {
-    if (''+req.user._id === ''+req.guide.userId) {
+    var errMes = "User not authorized to delete this Guide";
+    module.exports.isGuideCreator(req, next, errMes, function() {
       Guide.findByIdAndRemove(req.guide._id, function(err, result) {
         result ? res.status(204).send() : next(new Error("No Guide with that Id"));
       });
-    } else {
-      next(new Error("User not authorized to delete this Guide"));
-    }
+    });
+  },
+
+  isGuideCreator: function(req, next, errMes, cb) {
+    ''+req.user._id === ''+req.guide.userId ? cb() : next(new Error(errMes));
   }
 
 };
