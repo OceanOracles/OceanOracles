@@ -44,27 +44,24 @@ module.exports = {
   },
 
   editGuide: function(req, res, next) {
-    var errMes = "User not authorized to edit this Guide";
-    module.exports.isGuideCreator(req, next, errMes, function() {
-      var newGuide = { title: req.body.title, updatedAt: Date.now() };
-      var id = req.guide._id;
-      Guide.findByIdAndUpdate(id, newGuide, function(err, updatedGuide) {
-        err ? next(err) : res.send(updatedGuide);
-      });
+    var newGuide = { title: req.body.title, updatedAt: Date.now() };
+    Guide.findByIdAndUpdate(req.guide._id, newGuide, function(err, updatedGuide) {
+      err ? next(err) : res.send(updatedGuide);
     });
   },
 
   deleteGuide: function(req, res, next) {
-    var errMes = "User not authorized to delete this Guide";
-    module.exports.isGuideCreator(req, next, errMes, function() {
-      Guide.findByIdAndRemove(req.guide._id, function(err, result) {
-        result ? res.status(204).send() : next(new Error("No Guide with that Id"));
-      });
+    Guide.findByIdAndRemove(req.guide._id, function(err, result) {
+      result ? res.status(204).send() : next(new Error("No Guide with that Id"));
     });
   },
 
-  isGuideCreator: function(req, next, errMes, cb) {
-    ''+req.user._id === ''+req.guide.userId ? cb() : next(new Error(errMes));
+  isGuideCreator: function(req, res, next) {
+    if (''+req.user._id === ''+req.guide.userId) {
+      next();
+    } else {
+      next(new Error("User not authorized to change this Guide"));
+    }
   }
 
 };
