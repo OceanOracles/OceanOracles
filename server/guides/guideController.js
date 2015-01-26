@@ -44,7 +44,7 @@ module.exports = {
   },
 
   editGuide: function(req, res, next) {
-    var errMes = "User not authorized to delete this Guide";
+    var errMes = "User not authorized to edit this Guide";
     module.exports.isGuideCreator(req, next, errMes, function() {
       var newGuide = { title: req.body.title, updatedAt: Date.now() };
       var id = req.guide._id;
