@@ -1,0 +1,26 @@
+.btn {
+  @include padding(($base-spacing / 3) ($base-spacing / 1.5));
+  border: 1px solid $dark-gray;
+  color: $dark-gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  @include transition(0.2s all $ease-in-out-quad);
+
+  &.alt {
+    background: $base-accent-color;
+    border-color: $base-accent-color;
+    color: white;
+
+    &:hover {
+      background: darken($base-accent-color, 10);
+      color: white;
+      border-color: darken($base-accent-color, 10);
+    }
+  }
+
+  &:hover {
+    color: $dark-gray;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+}

@@ -1,0 +1,11 @@
+.main-nav {
+  @include position(absolute, 50% 0 null null);
+  @include transform(translateY(-50%));
+
+  .list-nav {
+
+    .nav-item {
+      display: inline-block;
+    }
+  }
+}
