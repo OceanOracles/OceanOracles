@@ -45,8 +45,15 @@ window.templateUtils = utils = {
 window.appUtils = {
 
   startRouter: function(router) {
-    new router();
+    var app = new router();
     Backbone.history.start({ pushState: true });
+    return app;
+  },
+
+  injectRouter: function(views, router) {
+    _.each(views, function(view) {
+      window[view].prototype.router = router;
+    });
   }
 
 };
