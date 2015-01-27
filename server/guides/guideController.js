@@ -1,4 +1,5 @@
 var Guide = require('./guideModel');
+var User = require('../users/userModel');
 
 module.exports = {
 
@@ -20,7 +21,23 @@ module.exports = {
       } else {
         var newGuide = { title: title, userId: userId };
         Guide.create(newGuide, function(err, guide) {
-          err ? next(err) : res.json(guide);
+          if (err) {
+            next(err);
+          } else {
+            User.findById(userId, function(err, user) {
+              if (err) {
+                next(err);
+              } else if (user) {
+                user.guides.push(guide._id);
+                user.updatedAt = Date.now();
+                user.save(function(err) {
+                  err ? next(err) : res.send(guide);
+                });
+              } else {
+                res.status(500).send();
+              }
+            });
+          }
         });
       }
     });
