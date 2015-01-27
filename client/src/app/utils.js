@@ -41,3 +41,13 @@ window.templateUtils = utils = {
   }
 
 };
+
+window.appUtils = {
+
+  startRouter: function(router) {
+    new router();
+    Backbone.history.start({ pushState: true });
+  }
+
+};
+

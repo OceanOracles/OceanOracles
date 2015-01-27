@@ -28,6 +28,5 @@ var LernhowRouter = Backbone.Router.extend({
 });
 
 templateUtils.loadTemplates(LernhowTemplates, function() {
-  new LernhowRouter();
-  Backbone.history.start({ pushState: true });
+  appUtils.startRouter(LernhowRouter);
 });
