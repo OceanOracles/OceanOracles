@@ -63,7 +63,17 @@ module.exports = {
 
   deleteGuide: function(req, res, next) {
     Guide.findByIdAndRemove(req.guide._id, function(err, result) {
-      result ? res.status(204).send() : next(new Error("No Guide with that Id"));
+      if (result) {
+        User.findById(req.user._id, function(err, user) {
+          var guideIdx = user.guides.indexOf(req.guide._id);
+          user.guides.splice(guideIdx, 1);
+          user.save(function(err) {
+            err ? res.status(500).send() : res.status(204).send();
+          });
+        });
+      } else {
+        next(new Error("No Guide with that Id"));
+      }
     });
   },
 
