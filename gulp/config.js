@@ -6,8 +6,8 @@ module.exports = {
     proxy: "http://localhost:8000"
   },
   sass: {
-    src: src + '/styles/**/{*.scss, _*.scss}',
-    dest: dest + '/styles'
+    src: src + '/assets/styles/**/{*.scss, _*.scss}',
+    dest: dest + '/assets/styles'
   },
   nodeDemon: {
     script: 'app.js',

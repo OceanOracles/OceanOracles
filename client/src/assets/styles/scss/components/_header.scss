@@ -1,0 +1,17 @@
+.main-header-container {
+  background: $yellow;
+}
+
+.main-header {
+  @include margin(0 auto);
+  @include padding(($base-spacing / 2) 0);
+  max-width: 1000px;
+  width: 90%;
+  position: relative;
+
+  .site-title {
+    margin: 0;
+    font-weight: 300;
+  }
+
+}

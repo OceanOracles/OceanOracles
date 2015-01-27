@@ -8,7 +8,7 @@ var LernhowRouter = Backbone.Router.extend({
   },
   initialize: function() {
     this.globalNav = new GlobalNavView();
-    $('.header').html(this.globalNav.el);
+    $('.main-header-container').html(this.globalNav.el);
   },
   index: function() {
     if (!this.homeView) {
