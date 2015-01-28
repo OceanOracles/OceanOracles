@@ -46,7 +46,7 @@ window.appUtils = {
 
   startRouter: function(router) {
     var app = new router();
-    Backbone.history.start({ pushState: true });
+    Backbone.history.start();
     return app;
   },
 
