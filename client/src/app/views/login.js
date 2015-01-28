@@ -15,11 +15,11 @@ window.LoginView = Backbone.View.extend({
     var $formUsername = this.$el.find('form .username');
     var $formPassword = this.$el.find('form .password');
     var user = new User({username: $formUsername.val(), password: $formPassword.val()})
-    var that = this;
+    var _this = this;
     user.fetch({url: "/api/users/login",
       success: function(){
         window.localStorage.currentUser = res.attributes.token;
-        that.router.navigate('/', { trigger: true })
+        _this.router.navigate('/', { trigger: true })
       },
       error: function(err){
         console.log(err);

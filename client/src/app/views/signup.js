@@ -16,11 +16,11 @@ window.SignupView = Backbone.View.extend({
     var $formEmail = this.$el.find('form #email');
 
     var user = new User({username: $formUsername.val(), password: $formPassword.val(), email: $formEmail.val()});
-    var that = this;
+    var _this = this;
     user.save(undefined, {url: "/api/users/signup",
       success: function(res){
       window.localStorage.currentUser = res.attributes.token;
-      that.router.navigate('/', { trigger: true })
+      _this.router.navigate('/', { trigger: true })
     },
       error: function(){
         console.log("error when trying to login")
