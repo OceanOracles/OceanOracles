@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var StepSchema = new Schema({
-  stepNum: { type: Number, required: true },
+  stepNum: { type: Number, required: true, max: 5, min: 1 },
   content: { type: String, required: true },
   userId: { type: Schema.ObjectId, ref: 'users' },
   guideId: { type: Schema.ObjectId, ref: 'guides' },
