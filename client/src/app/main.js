@@ -10,6 +10,8 @@ var LernhowRouter = Backbone.Router.extend({
   },
   initialize: function() {
     appUtils.checkForToken();
+    // this.model = new User();
+    // this.model.on('all', this.updateNav, this);
   },
   index: function() {
     appUtils.checkForToken();
@@ -35,6 +37,12 @@ var LernhowRouter = Backbone.Router.extend({
     this.notFoundView = new NotFoundView();
     $('.global-container').html(this.notFoundView.el);
   }
+  // updateNav: function(event){
+  //   switch (event){
+  //     case 'tokenAccess': return appUtils.changeNavView();
+  //     case 'noToken': return appUtils.changeNavViewAuth();
+  //   }
+  // }
 });
 
 templateUtils.loadTemplates(LernhowTemplates, function() {
