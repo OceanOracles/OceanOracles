@@ -1,4 +1,4 @@
-window.GlobalNavViewAlt = Backbone.View.extend({
+window.GlobalNavViewAuth = Backbone.View.extend({
   initialize: function() {
     this.render();
   },
