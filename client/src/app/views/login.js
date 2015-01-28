@@ -14,17 +14,18 @@ window.LoginView = Backbone.View.extend({
     e && e.preventDefault();
     var $formUsername = this.$el.find('form .username');
     var $formPassword = this.$el.find('form .password');
-    var user = new User({username: $formUsername.val(), password: $formPassword.val()})
+    var user = new User({username: $formUsername.val(), password: $formPassword.val()});
+    var userJSON = {username: $formUsername.val(), password : $formPassword.val()}
     var _this = this;
-    user.fetch({url: "/api/users/login",
-      success: function(){
-        window.localStorage.currentUser = res.attributes.token;
-        _this.router.navigate('/', { trigger: true })
-      },
-      error: function(err){
-        console.log(err);
-        console.log("error when trying to login")
-      }
+    $.ajax({
+      url: "/api/users/login",
+      type: "POST",
+      data: JSON.stringify(userJSON),
+      contentType: "application/json"
+    }).done(function(data){
+      console.log(data);
+      window.localStorage.setItem("_token", data.token);
+      _this.router.navigate('/', { trigger: true })
     })
   }
 
