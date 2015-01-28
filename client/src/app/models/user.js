@@ -1,7 +1,5 @@
 window.User = Backbone.Model.extend({
 
-  urlRoot: "api/users",
-
   defaults: {
     username: "",
     password: "",
