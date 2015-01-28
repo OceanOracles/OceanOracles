@@ -58,8 +58,8 @@ window.appUtils = {
 
   checkForToken: function(){
     if(window.localStorage._token){
-      this.globalNavAlt = new GlobalNavViewAlt();
-      $('.main-header-container').html(this.globalNavAlt.el);
+      this.globalNavAuth = new GlobalNavViewAuth();
+      $('.main-header-container').html(this.globalNavAuth.el);
     } else {
       this.globalNav = new GlobalNavView();
       $('.main-header-container').html(this.globalNav.el);
