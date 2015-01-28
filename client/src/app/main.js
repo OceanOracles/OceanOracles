@@ -16,16 +16,16 @@ var LernhowRouter = Backbone.Router.extend({
     if (!this.homeView) {
       this.homeView = new HomeView();
     }
-    $('#container').html(this.homeView.el);
+    $('.global-container').html(this.homeView.el);
     // this.globalNav.selectMenuItem('home-menu');
   },
   signup: function() {
     this.signupView = new SignupView();
-    $('#container').html(this.signupView.el)
+    $('.global-container').html(this.signupView.el)
   },
   login: function(){
     this.loginView = new LoginView();
-    $('#container').html(this.loginView.el)
+    $('.global-container').html(this.loginView.el)
   },
   logout: function(){
     window.localStorage.removeItem("_token");
@@ -33,7 +33,7 @@ var LernhowRouter = Backbone.Router.extend({
   },
   notFound: function() {
     this.notFoundView = new NotFoundView();
-    $('#container').html(this.notFoundView.el);
+    $('.global-container').html(this.notFoundView.el);
   }
 });
 
