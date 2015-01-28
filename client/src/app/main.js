@@ -1,4 +1,4 @@
-var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView'];
+var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView', 'GlobalNavViewAlt'];
 
 var LernhowRouter = Backbone.Router.extend({
   routes: {
@@ -9,10 +9,10 @@ var LernhowRouter = Backbone.Router.extend({
     '*nF': 'notFound'
   },
   initialize: function() {
-    this.globalNav = new GlobalNavView();
-    $('.main-header-container').html(this.globalNav.el);
+    appUtils.checkForToken();
   },
   index: function() {
+    appUtils.checkForToken();
     if (!this.homeView) {
       this.homeView = new HomeView();
     }
