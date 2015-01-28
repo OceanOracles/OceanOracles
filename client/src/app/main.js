@@ -1,4 +1,4 @@
-var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView'];
+var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView', 'GlobalNavViewAlt'];
 
 var LernhowRouter = Backbone.Router.extend({
   routes: {
