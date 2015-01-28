@@ -1,0 +1,33 @@
+.step {
+  background: white;
+  display: block;
+  position: relative;
+  @include padding($base-spacing / 2);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+
+  @include margin(0 0 0.75em 0);
+
+  &:last-of-type {
+    margin: 0;
+  }
+
+  .step-number-container {
+    @include position(absolute, 0 null 0 0);
+    background: $dark-gray;
+    color: $yellow;
+    @include padding(0 1.5em);
+  }
+
+  .step-number {
+    @include position(absolute, 50% null null 50%);
+    @include transform(translate(-50%, -50%));
+    font-weight: bold;
+    font-size: $h4-font-size;
+  }
+
+  .step-text {
+    @include margin(null null null 3em);
+  }
+}
