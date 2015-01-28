@@ -54,6 +54,16 @@ window.appUtils = {
     _.each(views, function(view) {
       window[view].prototype.router = router;
     });
+  },
+
+  checkForToken: function(){
+    if(window.localStorage._token){
+      this.globalNavAlt = new GlobalNavViewAlt();
+      $('.main-header-container').html(this.globalNavAlt.el);
+    } else {
+      this.globalNav = new GlobalNavView();
+      $('.main-header-container').html(this.globalNav.el);
+    }
   }
 
 };
