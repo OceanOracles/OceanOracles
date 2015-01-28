@@ -1,9 +1,10 @@
-var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView'];
+var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView'];
 
 var LernhowRouter = Backbone.Router.extend({
   routes: {
     '': 'index',
     'signup': 'signup',
+    'login': 'login',
     'logout': 'logout',
     '*nF': 'notFound'
   },
@@ -21,6 +22,10 @@ var LernhowRouter = Backbone.Router.extend({
   signup: function() {
     this.signupView = new SignupView();
     $('#container').html(this.signupView.el)
+  },
+  login: function(){
+    this.loginView = new LoginView();
+    $('#container').html(this.loginView.el)
   },
   logout: function(){
     delete window.localStorage.currentUser;
