@@ -4,6 +4,7 @@ var LernhowRouter = Backbone.Router.extend({
   routes: {
     '': 'index',
     'signup': 'signup',
+    'logout': 'logout',
     '*nF': 'notFound'
   },
   initialize: function() {
@@ -20,6 +21,10 @@ var LernhowRouter = Backbone.Router.extend({
   signup: function() {
     this.signupView = new SignupView();
     $('#container').html(this.signupView.el)
+  },
+  logout: function(){
+    delete window.localStorage.currentUser;
+    this.navigate("/", {trigger: true});
   },
   notFound: function() {
     this.notFoundView = new NotFoundView();
