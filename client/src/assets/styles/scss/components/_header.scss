@@ -6,7 +6,7 @@
   @include margin(0 auto);
   @include padding(($base-spacing / 2) 0);
   max-width: 1000px;
-  width: 90%;
+  width: 95%;
   position: relative;
 
   .site-title {
@@ -14,4 +14,18 @@
     font-weight: 300;
   }
 
+}
+
+/**
+ * Form header
+ */
+
+.form-header {
+  @include margin(0 0 1em 0);
+  @include padding(0 0 1em 0);
+
+  border-bottom: 1px solid $light-gray;
+  .form-title {
+
+  }
 }
