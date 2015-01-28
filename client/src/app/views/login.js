@@ -15,7 +15,7 @@ window.LoginView = Backbone.View.extend({
     var $formUsername = this.$el.find('form .username');
     var $formPassword = this.$el.find('form .password');
     var user = new User({username: $formUsername.val(), password: $formPassword.val()});
-    var userJSON = {username: $formUsername.val(), password : $formPassword.val()}
+    var userJSON = {username: $formUsername.val(), password : $formPassword.val()};
     var _this = this;
     $.ajax({
       url: "/api/users/login",
@@ -26,7 +26,7 @@ window.LoginView = Backbone.View.extend({
       console.log(data);
       window.localStorage.setItem("_token", data.token);
       _this.router.navigate('/', { trigger: true })
-    })
+    });
   }
 
 });
