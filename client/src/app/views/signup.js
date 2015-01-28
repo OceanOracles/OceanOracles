@@ -14,17 +14,19 @@ window.SignupView = Backbone.View.extend({
     var $formUsername = this.$el.find('form #username');
     var $formPassword = this.$el.find('form #password');
     var $formEmail = this.$el.find('form #email');
-    console.log(e);
-    console.log(this);
-    console.log($formUsername);
 
     var user = new User({username: $formUsername.val(), password: $formPassword.val(), email: $formEmail.val()});
-    console.log("model object", user);
-    user.save();
-    console.log("model id", user.id);
-    $formUsername.val('');
-    $formPassword.val('');
-    $formEmail.val('');
+    var that = this;
+    user.save(undefined, {url: "/api/users/signup",
+      success: function(res){
+      window.localStorage.currentUser = res.attributes.token;
+      that.router.navigate('/', { trigger: true })
+    },
+      error: function(){
+        console.log("error when trying to login")
+      }
+    });
+
   }
 });
 
