@@ -19,7 +19,7 @@ window.SignupView = Backbone.View.extend({
     var _this = this;
     user.save(undefined, {url: "/api/users/signup",
       success: function(res){
-      window.localStorage.currentUser = res.attributes.token;
+      window.localStorage.setItem("_token", res.attributes.token);
       _this.router.navigate('/', { trigger: true })
     },
       error: function(){
