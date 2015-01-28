@@ -11,7 +11,18 @@ window.User = Backbone.Model.extend({
     // this.checkForToken();
   },
 
-
+  login: function(JSONdata, router){
+    $.ajax({
+      url: "/api/users/login",
+      type: "POST",
+      data: JSONdata,
+      contentType: "application/json"
+    }).done(function(data){
+      console.log(data);
+      window.localStorage.setItem("_token", data.token);
+      router.navigate('/', { trigger: true })
+    })
+  },
 
   signup: function(router){
     this.save(undefined, {url: "/api/users/signup",

@@ -17,16 +17,7 @@ window.LoginView = Backbone.View.extend({
     var user = new User({username: $formUsername.val(), password: $formPassword.val()});
     var userJSON = {username: $formUsername.val(), password : $formPassword.val()};
     var _this = this;
-    $.ajax({
-      url: "/api/users/login",
-      type: "POST",
-      data: JSON.stringify(userJSON),
-      contentType: "application/json"
-    }).done(function(data){
-      console.log(data);
-      window.localStorage.setItem("_token", data.token);
-      _this.router.navigate('/', { trigger: true })
-    });
+    user.login(JSON.stringify(userJSON), this.router);
   }
 
 });
