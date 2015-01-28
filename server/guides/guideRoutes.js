@@ -13,4 +13,5 @@ module.exports = function(app) {
       .put(auth.checkAuth, guideController.isGuideCreator, guideController.editGuide)
       .delete(auth.checkAuth, guideController.isGuideCreator, guideController.deleteGuide);
 
+  app.get('/:guideId/steps', guideController.getSteps);
 };

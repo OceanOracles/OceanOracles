@@ -1,5 +1,6 @@
 var Guide = require('./guideModel');
 var User = require('../users/userModel');
+var Step = require('../steps/stepModel');
 
 module.exports = {
 
@@ -68,7 +69,13 @@ module.exports = {
           var guideIdx = user.guides.indexOf(req.guide._id);
           user.guides.splice(guideIdx, 1);
           user.save(function(err) {
-            err ? res.status(500).send() : res.status(204).send();
+            if (err) {
+              res.status(500).send();
+            } else {
+              Step.remove({ guideId: req.guide._id }, function(err, removed) {
+                err ? res.status(500).send() : res.status(204).send();
+              });
+            }
           });
         });
       } else {
@@ -83,6 +90,12 @@ module.exports = {
     } else {
       next(new Error("User not authorized to change this Guide"));
     }
+  },
+
+  getSteps: function(req, res, next) {
+    Step.find({ guideId: req.guide._id }, function(err, steps) {
+      err ? res.status(404).send() : res.send(steps);
+    });
   }
 
 };
