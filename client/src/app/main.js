@@ -1,10 +1,10 @@
 var LernhowTemplates = [
-  'GlobalNavView',
-  'HomeView',
-  'SignupView',
-  'NotFoundView',
-  'LoginView',
-  'GlobalNavViewAuth'
+'GlobalNavView',
+'HomeView',
+'SignupView',
+'NotFoundView',
+'LoginView',
+'GlobalNavViewAuth'
 ];
 
 var LernhowRouter = Backbone.Router.extend({
@@ -26,20 +26,20 @@ var LernhowRouter = Backbone.Router.extend({
     if (!this.homeView) {
       this.homeView = new HomeView();
     }
-    $('.global-container').html(this.homeView.el);
+    appUtils.swapView(this.homeView.el);
   },
 
   signup: function() {
     this.signupView = new SignupView();
-    $('.global-container').html(this.signupView.el);
+    appUtils.swapView(this.signupView.el);
   },
 
   login: function(){
     this.loginView = new LoginView();
-    $('.global-container').html(this.loginView.el);
+    appUtils.swapView(this.loginView.el);
   },
 
-  logout: function(){
+  logout: function() {
     window.localStorage.removeItem("_user.token");
     window.localStorage.removeItem("_user.name");
     this.navigate("/#", { trigger: true });
@@ -47,7 +47,7 @@ var LernhowRouter = Backbone.Router.extend({
 
   notFound: function() {
     this.notFoundView = new NotFoundView();
-    $('.global-container').html(this.notFoundView.el);
+    appUtils.swapView(this.notFoundView.el);
   }
 
 });

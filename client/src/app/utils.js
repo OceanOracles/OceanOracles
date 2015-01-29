@@ -64,6 +64,10 @@ window.appUtils = {
       this.globalNav = new GlobalNavView();
       $('.main-header-container').html(this.globalNav.el);
     }
+  },
+
+  swapView: function(viewEl) {
+    $('.global-container').html(viewEl);
   }
 
 };
