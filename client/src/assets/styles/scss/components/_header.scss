@@ -17,15 +17,27 @@
 }
 
 /**
- * Form header
+ * Site header
+ */
+.site-title {
+  a {
+    color: $dark-gray;
+    &:hover {
+      color: $medium-gray;
+    }
+  }
+}
+
+/**
+ * Page header
  */
 
-.form-header {
+.page-header {
   @include margin(0 0 1em 0);
   @include padding(0 0 1em 0);
 
   border-bottom: 1px solid $light-gray;
-  .form-title {
+  .page-title {
 
   }
 }

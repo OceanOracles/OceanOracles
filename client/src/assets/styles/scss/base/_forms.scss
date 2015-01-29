@@ -29,7 +29,7 @@ textarea,
 select[multiple=multiple] {
   @include box-sizing(border-box);
   @include transition(border-color);
-  background-color: white;
+  background-color: transparent;
   border: none;
   border-bottom: 2px solid $form-border-color;
   box-shadow: none;
