@@ -30,7 +30,8 @@ var LernhowRouter = Backbone.Router.extend({
     $('.global-container').html(this.loginView.el)
   },
   logout: function(){
-    window.localStorage.removeItem("_token");
+    window.localStorage.removeItem("_user.token");
+    window.localStorage.removeItem("_user.name");
     this.navigate("/#", {trigger: true});
   },
   notFound: function() {
