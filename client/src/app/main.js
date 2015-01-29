@@ -1,4 +1,4 @@
-var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView'];
+var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView', 'GlobalNavViewAuth'];
 
 var LernhowRouter = Backbone.Router.extend({
   routes: {
@@ -9,10 +9,12 @@ var LernhowRouter = Backbone.Router.extend({
     '*nF': 'notFound'
   },
   initialize: function() {
-    this.globalNav = new GlobalNavView();
-    $('.main-header-container').html(this.globalNav.el);
+    appUtils.checkForToken();
+    // this.model = new User();
+    // this.model.on('all', this.updateNav, this);
   },
   index: function() {
+    appUtils.checkForToken();
     if (!this.homeView) {
       this.homeView = new HomeView();
     }
@@ -35,6 +37,12 @@ var LernhowRouter = Backbone.Router.extend({
     this.notFoundView = new NotFoundView();
     $('.global-container').html(this.notFoundView.el);
   }
+  // updateNav: function(event){
+  //   switch (event){
+  //     case 'tokenAccess': return appUtils.changeNavView();
+  //     case 'noToken': return appUtils.changeNavViewAuth();
+  //   }
+  // }
 });
 
 templateUtils.loadTemplates(LernhowTemplates, function() {
