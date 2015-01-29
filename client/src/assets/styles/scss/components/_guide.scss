@@ -34,3 +34,36 @@
 .guide-controls {
   @include margin(1.777em null null null)
 }
+
+/**
+ *  Guide preview
+ */
+
+.guide-p-container {
+  @include row();
+}
+
+.guide-p {
+  @include padding($base-spacing / 2 $base-spacing);
+  background: $dark-gray;
+  display: block;
+  float: left;
+  width: 48%;
+  @include margin(0.75em 1%);
+  @include transition(0.2s background $ease-in-out-sine);
+
+  &:hover {
+    cursor: pointer;
+    background: $medium-gray;
+  }
+
+  .guide-p-title {
+    color: $yellow;
+  }
+
+  .guide-p-author {
+    text-transform: uppercase;
+    color: white;
+    @include margin(0);
+  }
+}
