@@ -57,12 +57,14 @@ window.appUtils = {
   },
 
   checkForToken: function() {
-    if(window.localStorage.getItem("_user.token")) {
+    if(window.localStorage.getItem('_user.token')) {
       this.globalNavAuth = new GlobalNavViewAuth();
       appUtils.swapView(this.globalNavAuth, '.main-header-container');
+      return true;
     } else {
       this.globalNav = new GlobalNavView();
       appUtils.swapView(this.globalNav, '.main-header-container');
+      return false;
     }
   },
 
