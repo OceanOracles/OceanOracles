@@ -28,7 +28,6 @@ window.User = Backbone.Model.extend({
   signup: function(router){
     this.save(undefined, {url: "/api/users/signup",
       success: function(res){
-        debugger;
       window.localStorage.setItem("_user.token", res.attributes.token);
       window.localStorage.setItem("_user.name", res.attributes.username);
       router.navigate('/', { trigger: true })
