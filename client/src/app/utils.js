@@ -67,11 +67,8 @@ window.appUtils = {
   },
 
   swapView: function(view, container) {
-    if (container) {
-      $(container).html(view.el);
-    } else {
-      $('.global-container').html(view.el);
-    }
+    container = container || '.global-container';
+    $(container).html(view.el);
   }
 
 };
