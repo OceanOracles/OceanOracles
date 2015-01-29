@@ -30,3 +30,7 @@
   line-height: 1.6;
   @include margin(1.777em 0);
 }
+
+.guide-controls {
+  @include margin(1.777em null null null)
+}
