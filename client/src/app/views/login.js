@@ -15,11 +15,9 @@ window.LoginView = Backbone.View.extend({
 
   loginUser: function(e){
     e && e.preventDefault();
-    var $formUsername = this.$el.find('form .username');
-    var $formPassword = this.$el.find('form .password');
     var userData = {
-      username: $formUsername.val(),
-      password: $formPassword.val()
+      username: this.$el.find('form .username').val(),
+      password: this.$el.find('form .password').val()
     };
     new User(userData).login(JSON.stringify(userData), this.router);
   }
