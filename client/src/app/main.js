@@ -1,4 +1,4 @@
-var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView'];
+var LernhowTemplates = ['GlobalNavView', 'HomeView', 'SignupView', 'NotFoundView', 'LoginView', 'GuideView', 'GuidesView'];
 
 var LernhowRouter = Backbone.Router.extend({
   routes: {
@@ -17,7 +17,13 @@ var LernhowRouter = Backbone.Router.extend({
       this.homeView = new HomeView();
     }
     $('.global-container').html(this.homeView.el);
-    // this.globalNav.selectMenuItem('home-menu');
+    this.guides = new Guides();
+    var options = {
+      el: '.all-guides',
+      collection: this.guides,
+      preview: true
+    };
+    this.guidesView = new GuidesView(options);
   },
   signup: function() {
     this.signupView = new SignupView();
