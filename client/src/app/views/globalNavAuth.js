@@ -3,7 +3,7 @@ window.GlobalNavViewAuth = Backbone.View.extend({
     this.render();
   },
   render: function() {
-    $(this.el).html(this.template());
+    this.$el.html(this.template());
     return this;
-  },
+  }
 });
