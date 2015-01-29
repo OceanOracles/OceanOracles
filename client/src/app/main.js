@@ -26,17 +26,17 @@ var LernhowRouter = Backbone.Router.extend({
     if (!this.homeView) {
       this.homeView = new HomeView();
     }
-    appUtils.swapView(this.homeView.el);
+    appUtils.swapView(this.homeView);
   },
 
   signup: function() {
     this.signupView = new SignupView();
-    appUtils.swapView(this.signupView.el);
+    appUtils.swapView(this.signupView);
   },
 
   login: function(){
     this.loginView = new LoginView();
-    appUtils.swapView(this.loginView.el);
+    appUtils.swapView(this.loginView);
   },
 
   logout: function() {
@@ -47,7 +47,7 @@ var LernhowRouter = Backbone.Router.extend({
 
   notFound: function() {
     this.notFoundView = new NotFoundView();
-    appUtils.swapView(this.notFoundView.el);
+    appUtils.swapView(this.notFoundView);
   }
 
 });

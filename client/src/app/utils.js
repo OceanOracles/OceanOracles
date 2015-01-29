@@ -59,15 +59,19 @@ window.appUtils = {
   checkForToken: function() {
     if(window.localStorage.getItem("_user.token")) {
       this.globalNavAuth = new GlobalNavViewAuth();
-      $('.main-header-container').html(this.globalNavAuth.el);
+      appUtils.swapView(this.globalNavAuth, '.main-header-container');
     } else {
       this.globalNav = new GlobalNavView();
-      $('.main-header-container').html(this.globalNav.el);
+      appUtils.swapView(this.globalNav, '.main-header-container');
     }
   },
 
-  swapView: function(viewEl) {
-    $('.global-container').html(viewEl);
+  swapView: function(view, container) {
+    if (container) {
+      $(container).html(view.el);
+    } else {
+      $('.global-container').html(view.el);
+    }
   }
 
 };
