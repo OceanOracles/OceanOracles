@@ -56,8 +56,8 @@ window.appUtils = {
     });
   },
 
-  checkForToken: function(){
-    if(window.localStorage.getItem("_user.token")){
+  checkForToken: function() {
+    if(window.localStorage.getItem("_user.token")) {
       this.globalNavAuth = new GlobalNavViewAuth();
       $('.main-header-container').html(this.globalNavAuth.el);
     } else {
@@ -67,4 +67,3 @@ window.appUtils = {
   }
 
 };
-
