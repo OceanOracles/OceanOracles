@@ -1,0 +1,4 @@
+.hero-container {
+  @include position(relative, null 0 null 0);
+  min-height: 400px;
+}
