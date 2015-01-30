@@ -5,7 +5,7 @@ var LernhowTemplates = [
   'NotFoundView',
   'LoginView',
   'GlobalNavViewAuth',
-  'GuidePreviewView'
+  'GuidePreviewView',
   'GuideCreateView',
   'GuideEditView'
 ];

@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var StepSchema = new Schema({
   stepNum: { type: Number, required: true, max: 5, min: 1 },
-  content: { type: String, required: true },
+  content: { type: String },
   userId: { type: Schema.ObjectId, ref: 'users' },
   guideId: { type: Schema.ObjectId, ref: 'guides' },
   createdAt: { type: Date, default: Date.now },
