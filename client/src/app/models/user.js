@@ -17,7 +17,14 @@ window.User = Backbone.Model.extend({
         window.localStorage.setItem("_user.name", JSON.parse(user).username);
         router.navigate('/', { trigger: true });
       },
-      error: function(err) { console.log(err.status + " " + err.statusText); }
+      error: function(err) {
+        console.log(err.status + " " + err.statusText);
+        var options = {
+          text: "Error: Incorrect username or password. Please try again."
+        };
+        this.formErrorView = new formErrorView(options);
+        $(".error-form-container").html(this.formErrorView.el);
+      }
     });
   },
 
@@ -29,7 +36,15 @@ window.User = Backbone.Model.extend({
         window.localStorage.setItem("_user.name", data.attributes.username);
         router.navigate('/', { trigger: true });
       },
-      error: function() { console.log("User signup error"); }
+      error: function() {
+        console.log("User signup error");
+        // _this.trigger("signupError", _this);
+        var options = {
+          text: "Error: Username or email is already taken. Please try again."
+        };
+        this.formErrorView = new formErrorView(options);
+        $(".error-form-container").html(this.formErrorView.el);
+      }
     });
   }
 
