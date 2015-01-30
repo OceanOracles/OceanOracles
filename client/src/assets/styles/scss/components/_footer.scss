@@ -1,0 +1,20 @@
+.main-footer {
+  background: $yellow;
+  border-top: 2px solid $light-gray;
+
+  &.fixed {
+    @include position(absolute, null 0 0 0);
+  }
+}
+
+.footer-inner {
+  &.site-width {
+    @include margin(0 auto);
+    @include padding(1em 0);
+  }
+
+  .copyright {
+    color: $dark-gray;
+    @include margin(0);
+  }
+}
