@@ -14,7 +14,7 @@ window.User = Backbone.Model.extend({
       contentType: 'application/json',
       success: function(data) {
         window.localStorage.setItem("_user.token", data.token);
-        window.localStorage.setItem("_user.name", JSON.parse(user).username);
+        window.localStorage.setItem("_user.ID", data.userID);
         router.navigate('/', { trigger: true });
       },
       error: function(err) {
@@ -33,7 +33,7 @@ window.User = Backbone.Model.extend({
       url: "/api/users/signup",
       success: function(data) {
         window.localStorage.setItem("_user.token", data.attributes.token);
-        window.localStorage.setItem("_user.name", data.attributes.username);
+        window.localStorage.setItem("_user.ID", data.attributes.userID);
         router.navigate('/', { trigger: true });
       },
       error: function() {
