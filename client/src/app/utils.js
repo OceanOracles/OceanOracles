@@ -57,20 +57,26 @@ window.appUtils = {
   },
 
   checkForToken: function() {
-    if(window.localStorage.getItem('_user.token')) {
+    if (window.localStorage.getItem('_user.token')) {
       this.globalNavAuth = new GlobalNavViewAuth();
       appUtils.swapView(this.globalNavAuth, '.main-header-container');
       return true;
-    } else {
-      this.globalNav = new GlobalNavView();
-      appUtils.swapView(this.globalNav, '.main-header-container');
-      return false;
     }
+    this.globalNav = new GlobalNavView();
+    appUtils.swapView(this.globalNav, '.main-header-container');
   },
 
   swapView: function(view, container) {
     container = container || '.global-container';
     $(container).html(view.el);
+  },
+
+  clearFields: function(fields) {
+    if (Array.isArray(fields)) {
+      _.each(fields, function(field) { field.val(''); });
+    } else {
+      fields.val('');
+    }
   }
 
 };

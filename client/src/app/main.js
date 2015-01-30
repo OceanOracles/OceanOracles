@@ -5,7 +5,7 @@ var LernhowTemplates = [
   'NotFoundView',
   'LoginView',
   'GlobalNavViewAuth',
-  'GuidePreviewView',
+  // 'GuidePreviewView',
   'GuideCreateView',
   'GuideEditView'
 ];
@@ -61,7 +61,8 @@ var LernhowRouter = Backbone.Router.extend({
     if (!appUtils.checkForToken()) {
       this.navigate('/');
     } else {
-      this.guideCreateView = new GuideCreateView();
+      var viewData = { model: new Guide(), steps: [] };
+      this.guideCreateView = new GuideCreateView(viewData);
       appUtils.swapView(this.guideCreateView);
     }
   },
