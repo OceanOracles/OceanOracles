@@ -13,12 +13,13 @@ module.exports = {
   createGuide: function(req, res, next) {
     var title = req.body.title;
     var userId = req.user._id;
+    var author = req.user.username;
 
     Guide.findOne({ title: title }, function(err, match) {
       if (err) { next(err); }
       else if (match) { res.send(match); }
       else {
-        var newGuide = { title: title, userId: userId };
+        var newGuide = { title: title, userId: userId, author: author };
         Guide.create(newGuide, function(err, guide) {
           if (err) { next(err); }
           else {
