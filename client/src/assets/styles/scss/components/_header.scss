@@ -3,10 +3,10 @@
 }
 
 .main-header {
-  @include margin(0 auto);
+  &.site-width {
+    @include margin(0 auto);
+  }
   @include padding(($base-spacing / 2) 0);
-  max-width: 1000px;
-  width: 95%;
   position: relative;
 
   .site-title {
@@ -33,7 +33,9 @@
  */
 
 .page-header {
-  @include margin(0 0 1em 0);
+  &.site-width {
+    @include margin(1em auto);
+  }
   @include padding(0 0 1em 0);
 
   border-bottom: 1px solid $light-gray;
