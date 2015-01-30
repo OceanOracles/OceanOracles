@@ -1,0 +1,15 @@
+.error-form-container {
+
+}
+
+.form-error{
+  @include padding(($base-spacing / 1.5) ($base-spacing / 1));
+  border: 1px solid $medium-gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #ec563b;
+  color: white;
+  display: inline-block;
+
+}
+
