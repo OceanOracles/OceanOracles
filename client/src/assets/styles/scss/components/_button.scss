@@ -5,6 +5,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   @include transition(0.2s all $ease-in-out-quad);
+  display: inline-block;
 
   &.alt {
     background: $base-accent-color;
