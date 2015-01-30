@@ -16,7 +16,7 @@ module.exports = {
         return user.comparePassword(password).then(function(foundUser) {
           if (foundUser) {
             var token = jwt.encode(user, 'donotchangethissecret');
-            res.json({ token: token, userID: user._id });
+            res.json({ token: token, userId: user._id });
           } else {
             return next(new Error('No user'));
           }
@@ -43,7 +43,7 @@ module.exports = {
       }
     }).then(function(user) {
       var token = jwt.encode(user, 'donotchangethissecret');
-      res.json({ token: token, userID: user._id });
+      res.json({ token: token, userId: user._id });
     }).fail(function(err) {
       next(err);
     });
