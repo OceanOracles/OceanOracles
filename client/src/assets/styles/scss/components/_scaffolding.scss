@@ -1,5 +1,5 @@
-.global-container {
-  @include margin(1.777em auto);
+.site-width {
+  @include margin(0 auto 1.777em auto);
   max-width: 1000px;
   width: 95%;
 }

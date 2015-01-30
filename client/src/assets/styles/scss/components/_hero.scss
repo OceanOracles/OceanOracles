@@ -1,0 +1,23 @@
+.hero-container {
+  @include position(relative, null 0 null 0);
+  @include margin(null null 1.777em null);
+  background: $dark-gray;
+  min-height: 400px;
+}
+
+.hero-inner {
+  @include position(absolute, 50% null null 50%);
+  @include transform(translate(-50%, -50%));
+  text-align: center;
+
+  .hero-lead {
+    color: $yellow;
+    font-weight: 300;
+  }
+
+  .hero-tagline {
+    font-size: $h4-font-size;
+    color: white;
+    text-transform: uppercase;
+  }
+}
