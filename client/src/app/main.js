@@ -24,8 +24,8 @@ var LernhowRouter = Backbone.Router.extend({
     'logout': 'logout',
 
     // guides CRUD
-    'guides/:guideId': 'viewGuide',
     'guides/new': 'newGuide',
+    'guides/:guideId': 'viewGuide',
     'guides/:guideId/edit': 'editGuide',
 
     // client-side catchall
