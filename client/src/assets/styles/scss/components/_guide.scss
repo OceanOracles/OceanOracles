@@ -2,6 +2,10 @@
   background: $off-white;
   @include padding($base-spacing);
   position: relative;
+
+  &.site-width {
+    @include margin(1.777em auto);
+  }
 }
 
 .guide-title {
