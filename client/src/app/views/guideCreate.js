@@ -7,8 +7,7 @@ window.GuideCreateView = Backbone.View.extend({
   },
 
   events: {
-    'click .create-edit-guide': 'createGuide',
-    'click .delete-guide': 'deleteGuide'
+    'click .create-edit-guide': 'createGuide'
   },
 
   render: function() {
@@ -31,11 +30,6 @@ window.GuideCreateView = Backbone.View.extend({
     appUtils.clearFields(this.$el.find('#G_title'));
     // TODO: navigate to new guide show view
     this.router.navigate('/', { trigger: true });
-  },
-
-  deleteGuide: function(e) {
-    e && e.preventDefault();
-    alert("deleteGuide action");
   },
 
   getAndSetSteps: function(guide, steps, stepFields) {
