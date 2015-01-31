@@ -19,7 +19,7 @@ module.exports = {
     src: [
       src + '/app/auth.js',
       src + '/app/models/user.js',
-      src + '/app.models/step.js',
+      src + '/app/models/step.js',
       src + '/app/models/guide.js',
       src + '/app/collections/guides.js',
       src + '/app/utils.js',
