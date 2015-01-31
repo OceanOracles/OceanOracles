@@ -93,6 +93,21 @@ window.appUtils = {
     footerFixer();
 
     $(window).on('resize', footerFixer);
+  },
+
+  getStepsData: function(fields, model) {
+    var steps = [];
+    fields.each(function(idx, field) {
+      var $field = $(field);
+      var stepData = {
+        stepNum: $field[0].attributes.name.value.split("").pop(),
+        content: $field.val(),
+        guideId: model.get('_id'),
+        userId: model.get('userId')
+      };
+      steps.push(stepData);
+    });
+    return steps;
   }
 
 };
