@@ -2,15 +2,20 @@ window.GuideUpdateView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
-    console.log("THIS IS MY MODEL: ", this.model);
   },
 
   events: {
+    'click .create-edit-guide': 'updateGuide',
     'click .delete-guide': 'deleteGuide'
   },
 
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template(this.model.attributes));
+  },
+
+  updateGuide: function(e) {
+    e && e.preventDefault();
+    // TODO: get updated fields and update model
   },
 
   deleteGuide: function(e) {
