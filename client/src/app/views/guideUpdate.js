@@ -29,7 +29,9 @@ window.GuideUpdateView = Backbone.View.extend({
 
   deleteGuide: function(e) {
     e && e.preventDefault();
-    alert('deleteGuide action triggered on click');
+    this.router.guides.deleteGuide(this.model, function() {
+      this.router.navigate('/', { trigger: true });
+    }.bind(this));
   }
 
 });
