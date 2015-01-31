@@ -7,7 +7,9 @@ var LernhowTemplates = [
   'GlobalNavViewAuth',
   'GuideListItemView',
   'GuideCreateView',
-  'GuideUpdateView'
+  'GuideUpdateView',
+  'GuideView',
+  'GuideAuthView'
 ];
 
 var LernhowRouter = Backbone.Router.extend({
@@ -22,6 +24,7 @@ var LernhowRouter = Backbone.Router.extend({
     'logout': 'logout',
 
     // guides CRUD
+    'guides/:guideId': 'viewGuide',
     'guides/new': 'newGuide',
     'guides/:guideId/edit': 'editGuide',
 
@@ -64,6 +67,27 @@ var LernhowRouter = Backbone.Router.extend({
     window.localStorage.removeItem("_user.token");
     window.localStorage.removeItem("_user.Id");
     this.navigate("/#", { trigger: true });
+  },
+
+  viewGuide: function(guideId) {
+    this.guides.fetch({
+      success: function(c) {
+        var guide = c.findWhere({ _id: guideId });
+
+        guide.getGuideSteps(function(steps) {
+          var userId = guide.get('userId');
+          guide.set('steps', steps);
+          if (appUtils.checkForToken() && userId === window.localStorage.getItem('_user.Id')) {
+            this.guideView = new GuideAuthView({ model: guide });
+
+          } else {
+            this.guideView = new GuideView({ model: guide });
+          }
+
+          appUtils.swapView(this.guideView);
+        });
+      }
+    });
   },
 
   newGuide: function() {
