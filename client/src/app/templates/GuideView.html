@@ -1,24 +1,49 @@
 <div class="guide-container site-width">
   <div class="guide-inner">
     <header class="guide-header">
-      <h2 class="guide-title"></h2>
+      <h2 class="guide-title"><%- title %></h2>
     </header>
 
     <div class="guide-meta">
-      <h4 class="guide-author"></h4>
-      <p class="guide-date"></p>
+      <h4 class="guide-author"><%- author %></h4>
+      <p class="guide-date"><%- updatedAt %></p>
     </div>
 
     <section class="guide-intro">
       <p class="guide-intro-text"></p>
     </section>
 
-    <section class="steps-container"></section>
-
-    <!-- Guide control for authorized author of guide -->
-    <div class="guide-controls">
-      <a class="btn alt edit-guide" href="#/guides/<%- guideId %>/edit">Edit</a>
-      <a class="btn delete-guide" href="#">Delete</a>
-    </div>
+    <section class="steps-container">
+      <div class="step">
+        <div class="step-number-container">
+          <div class="step-number">1</div>
+        </div>
+        <div class="step-text"><%- steps[0].content %></div>
+      </div>
+      <div class="step">
+        <div class="step-number-container">
+          <div class="step-number">2</div>
+        </div>
+        <div class="step-text"><%- steps[1].content %></div>
+      </div>
+      <div class="step">
+        <div class="step-number-container">
+          <div class="step-number">3</div>
+        </div>
+        <div class="step-text"><%- steps[2].content %></div>
+      </div>
+      <div class="step">
+        <div class="step-number-container">
+          <div class="step-number">4</div>
+        </div>
+        <div class="step-text"><%- steps[3].content %></div>
+      </div>
+      <div class="step">
+        <div class="step-number-container">
+          <div class="step-number">5</div>
+        </div>
+        <div class="step-text"><%- steps[4].content %></div>
+      </div>
+    </section>
   </div>
 </div>
