@@ -5,7 +5,7 @@ var LernhowTemplates = [
   'NotFoundView',
   'LoginView',
   'GlobalNavViewAuth',
-  // 'GuidePreviewView',
+  'GuideListItemView',
   'GuideCreateView',
   'GuideUpdateView'
 ];
@@ -41,6 +41,13 @@ var LernhowRouter = Backbone.Router.extend({
       this.homeView = new HomeView();
     }
     appUtils.swapView(this.homeView);
+
+    this.guides.fetch({
+      success: function(c) {
+        this.guideListView = new GuideListView({ collection: c });
+        appUtils.swapView(this.guideListView, '.guide-previews-container');
+      }
+    })
   },
 
   signup: function() {
