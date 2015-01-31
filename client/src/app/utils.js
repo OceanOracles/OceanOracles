@@ -81,7 +81,6 @@ window.appUtils = {
 
   footerFix: function() {
     var $footer = $('.main-footer');
-
     var footerFixer = function () {
       if (window.innerHeight > $('body').innerHeight()) {
         $footer.addClass('fixed');
@@ -89,10 +88,23 @@ window.appUtils = {
         $footer.removeClass('fixed');
       }
     };
-
     footerFixer();
-
     $(window).on('resize', footerFixer);
+  },
+
+  getStepsData: function(fields, model) {
+    var steps = [];
+    fields.each(function(idx, field) {
+      var $field = $(field);
+      var stepData = {
+        stepNum: $field[0].attributes.name.value.split("").pop(),
+        content: $field.val(),
+        guideId: model.get('_id'),
+        userId: model.get('userId')
+      };
+      steps.push(stepData);
+    });
+    return steps;
   }
 
 };

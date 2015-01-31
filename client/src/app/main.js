@@ -73,17 +73,16 @@ var LernhowRouter = Backbone.Router.extend({
     this.guides.fetch({
       success: function(c) {
         var guide = c.findWhere({ _id: guideId });
-
         guide.getGuideSteps(function(steps) {
           var userId = guide.get('userId');
           guide.set('steps', steps);
-          if (appUtils.checkForToken() && userId === window.localStorage.getItem('_user.Id')) {
+          var trueId = window.localStorage.getItem('_user.Id');
+          var authed = appUtils.checkForToken() && userId === trueId;
+          if (authed) {
             this.guideView = new GuideAuthView({ model: guide });
-
           } else {
             this.guideView = new GuideView({ model: guide });
           }
-
           appUtils.swapView(this.guideView);
         });
       }
