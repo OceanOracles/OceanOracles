@@ -43,7 +43,7 @@
  *  Guide preview
  */
 
-.guide-p-container {
+.guide-p-container, .guide-previews-container {
   @include row();
 }
 
