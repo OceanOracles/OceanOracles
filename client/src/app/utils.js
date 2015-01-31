@@ -69,6 +69,7 @@ window.appUtils = {
   swapView: function(view, container) {
     container = container || '.global-container';
     $(container).html(view.el);
+    this.footerFix.call(this);
   },
 
   clearFields: function(fields) {
@@ -81,15 +82,12 @@ window.appUtils = {
 
   footerFix: function() {
     var $footer = $('.main-footer');
-    var footerFixer = function () {
-      if (window.innerHeight > $('body').innerHeight()) {
-        $footer.addClass('fixed');
-      } else {
-        $footer.removeClass('fixed');
-      }
-    };
-    footerFixer();
-    $(window).on('resize', footerFixer);
+
+    if (window.innerHeight > $('body').innerHeight() + 50) {
+      $footer.addClass('fixed');
+    } else {
+      $footer.removeClass('fixed');
+    }
   },
 
   getStepsData: function(fields, model) {
