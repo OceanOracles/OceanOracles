@@ -23,6 +23,47 @@ window.Guide = Backbone.Model.extend({
         console.log(err.status + ' ' + err.statusText);
       }
     });
+  },
+
+  updateGuideSteps: function(stepsData, cb) {
+    var steps = this.get('steps');
+    _.each(steps, function(step, idx) {
+      var endpoint = '/api/steps/' + step._id;
+      var stepData = stepsData[idx];
+      this.updateGuideStep(endpoint, JSON.stringify(stepData));
+    }.bind(this));
+    cb();
+  },
+
+  updateGuideStep: function(endpoint, stepData) {
+    $.ajax({
+      url: endpoint,
+      type: 'PUT',
+      beforeSend: function(req) {
+        var token = window.localStorage.getItem('_user.token');
+        req.setRequestHeader('x-access-token', token);
+      },
+      contentType: 'application/json',
+      data: stepData,
+      error: function(err) { console.log(err); }
+    });
+  },
+
+  updateGuide: function(cb) {
+    var endpoint = this.url + '/' + this.get('_id');
+    var guideData = JSON.stringify(this.attributes);
+    $.ajax({
+      url: endpoint,
+      type: 'PUT',
+      beforeSend: function(req) {
+        var token = window.localStorage.getItem('_user.token');
+        req.setRequestHeader('x-access-token', token);
+      },
+      contentType: 'application/json',
+      data: guideData,
+      success: function() { cb(); },
+      error: function(err) { console.log(err); }
+    });
   }
 
 });
