@@ -23,16 +23,14 @@ window.GuideCreateView = Backbone.View.extend({
   createSteps: function(guide) {
     var steps = [];
     var $stepFields = this.$el.find('.step-input');
-    this.getAndSetSteps(guide, steps, $stepFields);
-    guide.set('steps', steps);
-    // TODO: remove after testing is complete
-    console.log(guide);
-    appUtils.clearFields(this.$el.find('#G_title'));
-    // TODO: navigate to new guide show view
-    this.router.navigate('/', { trigger: true });
+    this.getAndSetSteps(guide, steps, $stepFields, function(fullSteps) {
+      guide.set('steps', fullSteps);
+      appUtils.clearFields(this.$el.find('#G_title'));
+      this.router.navigate('/', { trigger: true });
+    }.bind(this));
   },
 
-  getAndSetSteps: function(guide, steps, stepFields) {
+  getAndSetSteps: function(guide, steps, stepFields, cb) {
     stepFields.each(function(idx, field) {
       var $field = $(field);
       var stepData = {
@@ -44,6 +42,7 @@ window.GuideCreateView = Backbone.View.extend({
       new Step().createStep(stepData, steps);
       appUtils.clearFields($field);
     });
+    cb(steps);
   }
 
 });

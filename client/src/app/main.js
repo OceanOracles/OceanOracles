@@ -1,18 +1,18 @@
 var LernhowTemplates = [
-'GlobalNavView',
-'HomeView',
-'SignupView',
-'NotFoundView',
-'LoginView',
-'GlobalNavViewAuth',
+  'GlobalNavView',
+  'HomeView',
+  'SignupView',
+  'NotFoundView',
+  'LoginView',
+  'GlobalNavViewAuth',
   // 'GuidePreviewView',
   'GuideCreateView',
   'GuideUpdateView'
-  ];
+];
 
-  var LernhowRouter = Backbone.Router.extend({
+var LernhowRouter = Backbone.Router.extend({
 
-    routes: {
+  routes: {
     // static root
     '': 'index',
 
@@ -76,8 +76,11 @@ var LernhowTemplates = [
       this.guides.fetch({
         success: function(collec, models, req) {
           var guide = collec.findWhere({ _id: guideId });
-          this.guideUpdateView = new GuideUpdateView({ model: guide });
-          appUtils.swapView(this.guideUpdateView);
+          guide.getGuideSteps(function(steps) {
+            guide.set('steps', steps);
+            this.guideUpdateView = new GuideUpdateView({ model: guide });
+            appUtils.swapView(this.guideUpdateView);
+          });
         }
       });
     }

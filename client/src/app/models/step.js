@@ -6,9 +6,7 @@ window.Step = Backbone.Model.extend({
 
   createStep: function(stepData, steps) {
     this.save(stepData, {
-      success: function(step) {
-        steps.push(step);
-      },
+      success: function(step) { steps.push(step); },
       error: function(step, res) { console.log("error", step, res); }
     });
   }

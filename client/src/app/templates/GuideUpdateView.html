@@ -5,7 +5,7 @@
   <form id="Guide_crud" action="" method="put">
     <div class="guide-inner">
       <header class="guide-header">
-        <input type="text" name="title" id="G_title" aria-labelledby="Title" placeholder="Guide title"/>
+        <input type="text" name="title" id="G_title" aria-labelledby="Title" placeholder="Guide title" value="<%- title %>" />
       </header>
 
       <!-- TODO: Work on this section once intro is added to schema -->
@@ -15,31 +15,31 @@
 
       <section class="steps-container steps-form">
         <div class="step">
-          <input type="text" name="step1" class="step-input" aria-labelledby="Step 1" placeholder="Step 1"/>
+          <input type="text" name="step1" class="step-input" aria-labelledby="Step 1" placeholder="Step 1" value="<%- steps[0].content %>" />
           <div class="step-number-container">
             <div class="step-number">1</div>
           </div>
         </div>
         <div class="step">
-          <input type="text" name="step2" class="step-input" aria-labelledby="Step 2" placeholder="Step 2"/>
+          <input type="text" name="step2" class="step-input" aria-labelledby="Step 2" placeholder="Step 2" value="<%- steps[1].content %>" />
           <div class="step-number-container">
             <div class="step-number">2</div>
           </div>
         </div>
         <div class="step">
-          <input type="text" name="step3" class="step-input" aria-labelledby="Step 3" placeholder="Step 3"/>
+          <input type="text" name="step3" class="step-input" aria-labelledby="Step 3" placeholder="Step 3" value="<%- steps[2].content %>" />
           <div class="step-number-container">
             <div class="step-number">3</div>
           </div>
         </div>
         <div class="step">
-          <input type="text" name="step4" class="step-input" aria-labelledby="Step 4" placeholder="Step 4"/>
+          <input type="text" name="step4" class="step-input" aria-labelledby="Step 4" placeholder="Step 4" value="<%- steps[3].content %>" />
           <div class="step-number-container">
             <div class="step-number">4</div>
           </div>
         </div>
         <div class="step">
-          <input type="text" name="step5" class="step-input" aria-labelledby="Step 5" placeholder="Step 5"/>
+          <input type="text" name="step5" class="step-input" aria-labelledby="Step 5" placeholder="Step 5" value="<%- steps[4].content %>" />
           <div class="step-number-container">
             <div class="step-number">5</div>
           </div>
