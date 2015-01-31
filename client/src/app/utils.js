@@ -81,7 +81,6 @@ window.appUtils = {
 
   footerFix: function() {
     var $footer = $('.main-footer');
-
     var footerFixer = function () {
       if (window.innerHeight > $('body').innerHeight()) {
         $footer.addClass('fixed');
@@ -89,9 +88,7 @@ window.appUtils = {
         $footer.removeClass('fixed');
       }
     };
-
     footerFixer();
-
     $(window).on('resize', footerFixer);
   },
 
