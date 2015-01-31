@@ -1,18 +1,18 @@
 var LernhowTemplates = [
-  'GlobalNavView',
-  'HomeView',
-  'SignupView',
-  'NotFoundView',
-  'LoginView',
-  'GlobalNavViewAuth',
+'GlobalNavView',
+'HomeView',
+'SignupView',
+'NotFoundView',
+'LoginView',
+'GlobalNavViewAuth',
   // 'GuidePreviewView',
   'GuideCreateView',
-  'GuideEditView'
-];
+  'GuideUpdateView'
+  ];
 
-var LernhowRouter = Backbone.Router.extend({
+  var LernhowRouter = Backbone.Router.extend({
 
-  routes: {
+    routes: {
     // static root
     '': 'index',
 
@@ -23,7 +23,7 @@ var LernhowRouter = Backbone.Router.extend({
 
     // guides CRUD
     'guides/new': 'newGuide',
-    'guides/edit': 'editGuide',
+    'guides/:guideId/edit': 'editGuide',
 
     // client-side catchall
     '*nF': 'notFound'
@@ -31,6 +31,8 @@ var LernhowRouter = Backbone.Router.extend({
 
   initialize: function() {
     appUtils.checkForToken();
+    this.guides = new Guides();
+    this.guides.fetch();
   },
 
   index: function() {
@@ -67,12 +69,17 @@ var LernhowRouter = Backbone.Router.extend({
     }
   },
 
-  editGuide: function() {
+  editGuide: function(guideId) {
     if (!appUtils.checkForToken()) {
       this.navigate('/');
     } else {
-      this.guideEditView = new GuideEditView();
-      appUtils.swapView(this.guideEditView);
+      this.guides.fetch({
+        success: function(collec, models, req) {
+          var guide = collec.findWhere({ _id: guideId });
+          this.guideUpdateView = new GuideUpdateView({ model: guide });
+          appUtils.swapView(this.guideUpdateView);
+        }
+      });
     }
   },
 

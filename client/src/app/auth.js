@@ -1,4 +1,4 @@
-var backboneSync = Backbone.sync
+var backboneSync = Backbone.sync;
 
 Backbone.sync = function (method, model, options) {
 
@@ -10,5 +10,5 @@ Backbone.sync = function (method, model, options) {
     }
   }
 
-  backboneSync(method, model, options);
+  return backboneSync.apply(this, [method, model, options]);
 };
