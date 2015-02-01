@@ -35,7 +35,7 @@ module.exports = {
       } else if (err) {
         next(err);
       } else {
-        next(new Error("No Step with that Id"));
+        next(new Error('No Step with that Id'));
       }
     });
   },
@@ -55,7 +55,7 @@ module.exports = {
     if (''+req.user._id === ''+req.step.userId) {
       next();
     } else {
-      next(new Error("User not authorized to change this Step"));
+      next(new Error('User not authorized to change this Step'));
     }
   },
 
@@ -64,7 +64,7 @@ module.exports = {
       if (user.guides.indexOf(req.body.guideId) >= 0) {
         next();
       } else {
-        next(new Error("User not authorized to edit this Guide's Step"));
+        next(new Error('User not authorized to edit this Guide\'s Step'));
       }
     });
   }

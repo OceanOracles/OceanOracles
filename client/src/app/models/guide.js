@@ -3,13 +3,13 @@ window.Guide = Backbone.Model.extend({
   url: '/api/guides',
 
   defaults: {
-    title: ""
+    title: ''
   },
 
   createGuide: function(guideData) {
     this.save(guideData, {
       success: function(model) { model.trigger('created', model); },
-      error: function(model, res) { console.log("error", model, res); }
+      error: function(model, res) { console.log('error', model, res); }
     });
   },
 
@@ -18,7 +18,10 @@ window.Guide = Backbone.Model.extend({
     $.ajax({
       url: endpoint,
       type: 'GET',
-      success: function(stepsData) { cb(stepsData); },
+      success: function(stepsData) {
+        var sortedSteps = _.sortBy(stepsData, 'stepNum');
+        cb(sortedSteps);
+      },
       error: function(err) {
         console.log(err.status + ' ' + err.statusText);
       }
