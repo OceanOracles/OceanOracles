@@ -18,7 +18,10 @@ window.Guide = Backbone.Model.extend({
     $.ajax({
       url: endpoint,
       type: 'GET',
-      success: function(stepsData) { cb(stepsData); },
+      success: function(stepsData) {
+        var sortedSteps = _.sortBy(stepsData, 'stepNum');
+        cb(sortedSteps);
+      },
       error: function(err) {
         console.log(err.status + ' ' + err.statusText);
       }
