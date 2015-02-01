@@ -25,7 +25,7 @@ window.templateUtils = utils = {
   },
 
   log: function(view) {
-    console.log(view + " not found");
+    console.log(view + ' not found');
   },
 
   getView: function(view) {
@@ -95,7 +95,7 @@ window.appUtils = {
     fields.each(function(idx, field) {
       var $field = $(field);
       var stepData = {
-        stepNum: $field[0].attributes.name.value.split("").pop(),
+        stepNum: $field[0].attributes.name.value.split('').pop(),
         content: $field.val(),
         guideId: model.get('_id'),
         userId: model.get('userId')
