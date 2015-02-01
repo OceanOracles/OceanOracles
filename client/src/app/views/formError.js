@@ -1,4 +1,4 @@
-window.formErrorView = Backbone.View.extend({
+window.FormErrorView = Backbone.View.extend({
 
   template: _.template('<div class="form-error"> <%- text %> </div>'),
 
