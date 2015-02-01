@@ -47,7 +47,7 @@ module.exports = {
       } else if (err) {
         next(err);
       } else {
-        next(new Error("No Guide with that Id"));
+        next(new Error('No Guide with that Id'));
       }
     });
   },
@@ -80,7 +80,7 @@ module.exports = {
           });
         });
       } else {
-        next(new Error("No Guide with that Id"));
+        next(new Error('No Guide with that Id'));
       }
     });
   },
@@ -89,7 +89,7 @@ module.exports = {
     if (''+req.user._id === ''+req.guide.userId) {
       next();
     } else {
-      next(new Error("User not authorized to change this Guide"));
+      next(new Error('User not authorized to change this Guide'));
     }
   },
 

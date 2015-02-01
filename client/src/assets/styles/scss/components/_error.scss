@@ -3,13 +3,12 @@
 }
 
 .form-error{
-  @include padding(($base-spacing / 1.5) ($base-spacing / 1));
-  border: 1px solid $medium-gray;
+  @include padding(($base-spacing / 1.5) $base-spacing);
   text-transform: uppercase;
   letter-spacing: 1px;
   background: #ec563b;
   color: white;
-  display: inline-block;
+  display: block;
 
 }
 
