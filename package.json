@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node app.js"
   },
   "author": "lernhow",
   "contributors": [
