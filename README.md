@@ -75,7 +75,7 @@ heroku create app-name
 Set up your Heroku app to use [this buildpack](https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass) and the correct Node environment
 
 ```sh
-heroku config:set BUILDPACK_URL=https://github.com/evenemento/heroku-buildpack-nodejs-gulp-bower-sass.git NODE_ENV=production
+heroku config:set BUILDPACK_URL=https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass.git NODE_ENV=production
 ```
 
 Add the MongoLab addon (this step will require a credit card on file)
