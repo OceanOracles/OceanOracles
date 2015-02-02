@@ -1,68 +1,78 @@
 # Lernhow
 
-> Curated bites for self-starters – 5 steps to lerning
-
 **Lernhow** provides 5-step guides to knowledge, created by *lerners* for *lerners*.
-No more searching sprawling wikis for what you need. Avoid all the useless information.
-Come to [lernhow](https://lernhow.herokuapp.com/).
+No more searching sprawling wikis for what you need. Avoid all the useless information. Come [**Lernhow**](https://lernhow.herokuapp.com/).
+
+---
 
 ## Table of Contents
 
 1. [Requirements](#requirements)
-1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
+    1. [Running the Server](#running-the-server)
 1. [Deployment](#deployment)
 1. [Documentation](#documentation)
 1. [Roadmap](#roadmap)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
-## Requirements
+---
+
+## Development Requirements
 
 - Node 0.10.x
 - npm 2.x.x
 - MongoDB 2.6.x
 - Sass 3.4.x
 
-To install Node (bundled with npm) & MongoDB with [Homebrew](http://brew.sh/)
+### Installing Dependencies
+
+Install Node (bundled with npm) with [Homebrew](http://brew.sh/)
 
 ```sh
-brew install node mongodb
+brew install node
 ```
 
-To install Sass you will need [Ruby](https://www.ruby-lang.org/en/)
+Install MongoDB with [Homebrew](http://brew.sh/)
+
+```sh
+brew install mongodb
+```
+
+Install Sass (you will need [Ruby](https://www.ruby-lang.org/en/))
 
 ```sh
 gem install sass
 ```
 
-
-## Development
-
-### Installing Dependencies
-
-Bower
+Install Bower **Globally**
 
 ```sh
 npm install -g bower
 ```
 
-Project dependencies
+Install Project Dependencies
 
 ```sh
 npm install
 bower install
 ```
 
-Development server
+### Running the Server
+
+Use **gulp** to start the development server
 
 ```sh
 gulp
 ```
 
+You should now be able to preview your development site at [http://localhost:8000](http://localhost:8000/)
+
+---
+
 ## Deployment
 
-Deploying to Heroku requires a Heroku account and the Heroku toolbelt installed - [instructions here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+Deploying to Heroku requires a Heroku account and the Heroku toolbelt installed &mdash; [instructions here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up). Once you have the Heroku toolbelt and an account, proceed with the instructions below.
 
 Log in to your account via the Heroku CLI
 
@@ -76,137 +86,297 @@ Create a new Heroku app in the root folder of your project, optionally specifyin
 heroku create app-name
 ```
 
-Set up your Heroku app to use [this buildpack](https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass) and the correct Node environment
+Set up your Heroku app to use [this buildpack](https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass) and the correct Node environment by running ***the following command***:
 
 ```sh
 heroku config:set BUILDPACK_URL=https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass.git NODE_ENV=production
 ```
 
-Add the MongoLab addon (this step will require a credit card on file)
+Add the MongoLab addon (this step will require a credit card on file in your Heroku account)
 
 ```sh
 heroku addons:add mongolab
 ```
 
-Check your config to make sure it has a BUILDPACK_URL, NODE_ENV, and MONGOLAB_URI
+Check your production environment configuration variables to make sure it has a BUILDPACK_URL, NODE_ENV, and MONGOLAB_URI
 
 ```sh
 heroku config
 ```
 
-Push up to master to deploy
+If your configuration variables looked correct, push your branch onto the master branch of your **heroku** remote
 
 ```sh
-git push heroku master
+git push heroku <BRANCH_NAME>:master
 ```
 
-## Documentation
+## ***Lernhow*** API Documentation
 
-Lernhow is mostly a client side app and has a fairly simple API.
+### API Authentication
 
-### Users
+**Lernhow** uses [JSON Web Tokens](http://jwt.io/) to authenticate requests to the API. When a client signs up or logs in, the client is given a web token, which is attached on every future request to the **Lernhow** API. The attached token allows the server to verify the authenticity of the client request. The token should be sent as an `'x-access-token'` header with the client request.
 
-API uri:
+Here is an example **curl** request to a protected endpoint:
 
-`/api/users`
+```sh
+curl "https://lernhow.herokuapp.com/api/protected-endpoint"
+  -H "x-access-token: someridiculouslylongstringthatyoushouldputhere"
+```
 
-#### Signup user
+### API Endpoints
 
-Make an HTTP request:
+The API currently serves three resources, mapped to URIs as follows:
 
-`POST /api/users/signup`
+- **User** -> `/api/users`
+- **Guide** -> `/api/guides`
+- **Step** -> `/api/steps`
 
-#### Login user
+### *Users*
 
-Make an HTTP request:
+Endpoint: `/api/users`
 
-`POST /api/users/login`
+#### Signup a new user
 
-#### Authentication for user
+HTTP request: `POST /api/users/signup`
 
-Lernhow uses [Json Web Tokens](http://jwt.io/) to authenticate users.
-When users login or signup they are given a web token, which they then send through the headers to the lernhow API whenever they make a request.
+HTTP response: a valid JSON web token and a unique *userId* of the following format:
 
-The HTTP request of:
-`POST /api/users/auth`
-will be run when a user tries to do an http method that needs to be authenticated.
+```JSON
+{
+  "token": "boomshakalakausertokensupercraycrayencryption",
+  "userId": "somestringthatisunique"
+}
+```
 
-### Guides
+#### Login a user with a valid account
 
-API uri:
+HTTP request: `POST /api/users/login`
 
-`/api/guides`
+***Note***: the request body must send a valid **username** and **password**
+
+HTTP response (successful login): a valid JSON web token and a unique *userId* of the following format:
+
+```JSON
+{
+  "token": "boomshakalakausertokensupercraycrayencryption",
+  "userId": "somestringthatisunique"
+}
+```
+
+HTTP response (error on login): a JSON error object of the following format:
+
+```JSON
+{
+  "status": "404",
+  "message": "Some login-related error message"
+}
+```
+
+### *Guides*
+
+Endpoint: `/api/guides`
 
 #### Get all guides
 
-Make an HTTP request:
+HTTP request: `GET /api/guides/`
 
-`GET /api/guides/`
+HTTP response: an array of JSON **Guide** objects of the following format:
 
-#### Create a guide
+```JSON
+[
+  {
+    "_id": "sdafljk29askdjf20",
+    "title": "Some Witty Title",
+    "userId": "asdlfkjweraksjdfashkbf",
+    "author": "SomeUsername",
+    "createdAt": "Date of resource creation",
+    "updatedAt": "Date of last resource update"
+  },
+  {
+    "_id": "jklljkhkjasdfjlk18",
+    "title": "Some Witty Title 2",
+    "userId": "lkljkkljhkhjasdfasdf",
+    "author": "SomeUsername2",
+    "createdAt": "Date of resource creation",
+    "updatedAt": "Date of last resource update"
+  },
+  "..."
+]
+```
 
-Make an HTTP request:
+#### Create a new guide
 
-`POST /api/guides/`
+HTTP request: `POST /api/guides/`
 
-#### Show a specific guide
+***Note***: the request body must send a **title**, and the request header must contain a valid `'x-access-token'`.
 
-Make an HTTP request:
+HTTP response: a JSON representation of the newly created **Guide**:
 
-`GET /api/guides/:guideId`
+```JSON
+{
+  "_id": "sdafljk29askdjf20",
+  "title": "Some Witty Title",
+  "userId": "asdlfkjweraksjdfashkbf",
+  "author": "SomeUsername",
+  "createdAt": "Date of resource creation",
+  "updatedAt": "Date of last resource update"
+}
+```
 
-#### Edit specific guide
+#### Get a specific guide
 
-Make an HTTP request:
+HTTP request: `GET /api/guides/:guideId`
 
-`PUT /api/guides/:guideId`
+***Note***: the request header must contain a valid `'x-access-token'`.
+
+HTTP response: a JSON representation of the requested **Guide**:
+
+```JSON
+{
+  "_id": "guideIdFromRequestUri",
+  "title": "Some Witty Title",
+  "userId": "asdlfkjweraksjdfashkbf",
+  "author": "SomeUsername",
+  "createdAt": "Date of resource creation",
+  "updatedAt": "Date of last resource update"
+}
+```
+
+#### Edit a specific guide
+
+HTTP request: `PUT /api/guides/:guideId`
+
+***Note***: the request body should send the data with which to update the resource, and the request header must contain a valid `'x-access-token'` that matches the token of the resource **creator**.
+
+HTTP response: a JSON representation of the recently edited **Guide**:
+
+```JSON
+{
+  "_id": "guideIdFromRequestUri",
+  "title": "Some Even Wittier Title",
+  "userId": "asdlfkjweraksjdfashkbf",
+  "author": "SomeUsername",
+  "createdAt": "Date of resource creation",
+  "updatedAt": "Date of last resource update"
+}
+```
 
 #### Delete specific guide
 
-Make an HTTP request:
+HTTP request: `Delete /api/guides/:guideId`
 
-`Delete /api/guides/:guideId`
+***Note***: the request header must contain a valid `'x-access-token'` that matches the token of the resource **creator**.
 
-#### Show a specific guide's steps
+HTTP response (if successful resource deletion): `204` status code
 
-Make an HTTP request:
+HTTP response (if unsuccessful resource deletion): `500` status code
 
-`GET /api/guides/:guideId/steps`
+#### Show a specific guide's 5 steps
 
-### Steps
+HTTP request: `GET /api/guides/:guideId/steps`
 
-API url:
+***Note***: the request header must contain a valid `'x-access-token'`.
 
-`/api/steps`
+HTTP response: a JSON representation of the requested **Guide's** *5 steps*:
 
-### Create a step
+```JSON
+[
+  {
+    "_id": "someStepId",
+    "stepNum": "1",
+    "content": "Some really smart step content",
+    "userId": "asdlfkjweraksjdfashkbf",
+    "guideId": "guideIdFromRequestUri",
+    "createdAt": "Date of resource creation",
+    "updatedAt": "Date of last resource update"
+  },
+  {
+    "_id": "someStepId2",
+    "stepNum": "2",
+    "content": "Some really smart step content 2",
+    "userId": "asdlfkjweraksjdfashkbf",
+    "guideId": "guideIdFromRequestUri",
+    "createdAt": "Date of resource creation",
+    "updatedAt": "Date of last resource update"
+  },
+  "... 5 total steps"
+]
+```
 
-Make an HTTP request:
+### *Steps*
 
-`POST /api/steps/`
+Endpoint: `/api/steps`
 
-### Show a specific step
+#### Create a new step
 
-Make an HTTP request:
+HTTP request: `POST /api/steps/`
 
-`POST /api/steps/:stepId`
+***Note***: the request body must send **content**, and the request header must contain a valid `'x-access-token'`.
 
-### Edit a specific step
+HTTP response: a JSON representation of the newly created **Step**:
 
-Make an HTTP request:
+```JSON
+{
+  "_id": "someStepId",
+  "stepNum": "1",
+  "content": "Some really smart step content",
+  "userId": "asdlfkjweraksjdfashkbf",
+  "guideId": "guideIdFromRequestUri",
+  "createdAt": "Date of resource creation",
+  "updatedAt": "Date of last resource update"
+}
+```
 
-`PUT /api/steps/:stepId`
+#### Get a specific step
 
-## Roadmap
+HTTP request: `POST /api/steps/:stepId`
 
-View the project roadmap [here](https://github.com/OceanOracles/OceanOracles/issues)
+***Note***: the request header must contain a valid `'x-access-token'`.
 
-## Team
+HTTP response: a JSON representation of the requested **Step**:
+
+```JSON
+{
+  "_id": "stepIdFromRequestUri",
+  "title": "Some Witty Title",
+  "userId": "asdlfkjweraksjdfashkbf",
+  "author": "SomeUsername",
+  "createdAt": "Date of resource creation",
+  "updatedAt": "Date of last resource update"
+}
+```
+
+#### Edit a specific step
+
+HTTP request: `PUT /api/steps/:stepId`
+
+***Note***: the request body should send the data with which to update the resource, and the request header must contain a valid `'x-access-token'` that matches the token of the resource **creator**.
+
+HTTP response: a JSON representation of the recently edited **Step**:
+
+```JSON
+{
+  "_id": "stepIdFromRequestUri",
+  "title": "Some Witty Title Updated",
+  "userId": "asdlfkjweraksjdfashkbf",
+  "author": "SomeUsername",
+  "createdAt": "Date of resource creation",
+  "updatedAt": "Date of last resource update"
+}
+```
+
+---
+
+## Product Roadmap
+
+The product roadmap is managed through this repository's **Issues** &mdash; [view the roadmap here](https://github.com/OceanOracles/OceanOracles/issues).
+
+## *Lernhow* Team
 
   - __Product Owner__: Raghuvir Kasturi
   - __Scrum Master__: Eric Kennedy
-  - __Development Team Members__: Clark Feusier
+  - __Development Team__: Clark Feusier
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+We welcome contributions, but please read our [contribution guidelines](CONTRIBUTING.md) before submitting your work.
