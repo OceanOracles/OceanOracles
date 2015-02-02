@@ -129,61 +129,72 @@ When users login or signup they are given a web token, which they then send thro
 
 The HTTP request of:
 `POST /api/users/auth`
-Will be run when a user tries to do an http method that needs to be authenticated.
+will be run when a user tries to do an http method that needs to be authenticated.
 
 ### Guides
 
 API uri:
+
 '/api/guides'
 
 #### Get all guides
 
 Make an HTTP request:
+
 'GET /api/guides/'
 
 #### Create a guide
 
 Make an HTTP request:
+
 'POST /api/guides/'
 
 #### Show a specific guide
 
 Make an HTTP request:
+
 'GET /api/guides/:guideId'
 
 #### Edit specific guide
 
 Make an HTTP request:
+
 'PUT /api/guides/:guideId'
 
 #### Delete specific guide
 
 Make an HTTP request:
+
 'Delete /api/guides/:guideId'
 
 #### Show a specific guide's steps
 
 Make an HTTP request:
+
 'GET /api/guides/:guideId/steps'
 
 ### Steps
 
 API url:
+
 '/api/steps'
 
 ### Create a step
 
 Make an HTTP request:
+
 'POST /api/steps/'
 
 ### Show a specific step
 
 Make an HTTP request:
+
 'POST /api/steps/:stepId'
 
 ### Edit a specific step
 
 Make an HTTP request:
+
 'PUT /api/steps/:stepId'
 
 ## Roadmap
