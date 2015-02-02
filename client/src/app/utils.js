@@ -1,3 +1,7 @@
+/**
+ * Template utilities to asynchronously load the template files
+ * into the browser and make them available for their respective views
+ */
 window.templateUtils = utils = {
 
   loadTemplates: function(views, cb) {
@@ -42,6 +46,9 @@ window.templateUtils = utils = {
 
 };
 
+/**
+ * Global app utilities
+ */
 window.appUtils = {
 
   startRouter: function(router) {
