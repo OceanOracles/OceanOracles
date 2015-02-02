@@ -1,4 +1,4 @@
-# Project Name #
+# Lernhow #
 
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -16,13 +16,13 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
 
-## OceanOracle ##
+## Lernhow ##
 Curated bites for self-starters – 5 steps to lerning
 
 
 ## Summary ##
-**OceanOracle**  provides 5-step guides to knowledge, created by *lerners*  for *lerners*. No more
-searching sprawling wikis for what you need. Avoid all the useless information. Come to OceanOracle.
+**Lernhow**  provides 5-step guides to knowledge, created by *lerners*  for *lerners*. No more
+searching sprawling wikis for what you need. Avoid all the useless information. Come to Lernhow.
 
 ## Problem ##
 The internet and its users have generate an amazing wealth of knowledge that is poorly aggregated, sub-optimally
@@ -40,4 +40,4 @@ Get clear directions how to lern a skill. Just follow 5 steps and go from novice
   > I couldn't even tie my shoe. Now i have millions of dollars
 – Everyone who used this product
 
-#### Start [lerning now!](http://oceanoracle.com)
+#### Start [lerning now!](https://lernhow.herokuapp.com/)
