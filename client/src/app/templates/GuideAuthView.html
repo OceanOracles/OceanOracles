@@ -6,7 +6,7 @@
 
     <div class="guide-meta">
       <h4 class="guide-author"><%- author %></h4>
-      <p class="guide-date"><%- updatedAt %></p>
+      <p class="guide-date"><%- moment(updatedAt).fromNow() %></p>
     </div>
 
     <section class="guide-intro">
