@@ -31,7 +31,9 @@ module.exports = {
                 user.save(function(err) {
                   err ? next(err) : res.send(guide);
                 });
-              } else { res.status(500).send(); }
+              } else {
+                next({ status: 500, message: 'Something went wrong on our end.' })
+              }
             });
           }
         });
@@ -47,7 +49,7 @@ module.exports = {
       } else if (err) {
         next(err);
       } else {
-        next(new Error('No Guide with that Id'));
+        next({ status: 404, message: 'No guide with that ID' });
       }
     });
   },
@@ -80,7 +82,7 @@ module.exports = {
           });
         });
       } else {
-        next(new Error('No Guide with that Id'));
+        next({ status: 404, message: 'No guide with that ID' });
       }
     });
   },
@@ -89,7 +91,7 @@ module.exports = {
     if (''+req.user._id === ''+req.guide.userId) {
       next();
     } else {
-      next(new Error('User not authorized to change this Guide'));
+      next({ status: 401, message: 'User not authorized to change this guide' });
     }
   },
 
