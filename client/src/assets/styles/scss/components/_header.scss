@@ -43,3 +43,23 @@
 
   }
 }
+
+/**
+ * Guide previews header
+ */
+
+.guide-previews-header {
+
+  @include margin(null null 0.75em null);
+  text-align: center;
+  @include padding(null null 0.75em null);
+  border-bottom: 1px solid $light-gray;
+
+  .guide-previews-title {
+    font-family: $sans-serif;
+    text-transform: uppercase;
+    color: $dark-gray;
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+}
