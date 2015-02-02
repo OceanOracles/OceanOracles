@@ -107,16 +107,19 @@ Lernhow is mostly a client side app and has a fairly simple API.
 ### Users
 
 API uri:
-'/api/users'
+
+`/api/users`
 
 #### Signup user
 
 Make an HTTP request:
+
 `POST /api/users/signup`
 
 #### Login user
 
 Make an HTTP request:
+
 `POST /api/users/login`
 
 #### Authentication for user
@@ -125,7 +128,7 @@ Lernhow uses [Json Web Tokens](http://jwt.io/) to authenticate users.
 When users login or signup they are given a web token, which they then send through the headers to the lernhow API whenever they make a request.
 
 The HTTP request of:
-'POST /api/users/auth'
+`POST /api/users/auth`
 Will be run when a user tries to do an http method that needs to be authenticated.
 
 ### Guides
