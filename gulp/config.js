@@ -49,7 +49,8 @@ module.exports = {
       src + '/lib/jquery/dist/jquery.js',
       src + '/lib/underscore/underscore.js',
       src + '/lib/backbone/backbone.js',
-      src + '/lib/handlebars/handlebars.js'
+      src + '/lib/handlebars/handlebars.js',
+      src + '/lib/moment/moment.js'
     ],
     dest: dest + '/lib'
   },
