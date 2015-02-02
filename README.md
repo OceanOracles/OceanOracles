@@ -1,6 +1,10 @@
-# OceanOracle
+# Lernhow
 
 > Curated bites for self-starters – 5 steps to lerning
+
+**Lernhow** provides 5-step guides to knowledge, created by *lerners* for *lerners*.
+No more searching sprawling wikis for what you need. Avoid all the useless information.
+Come to [lernhow](https://lernhow.herokuapp.com/).
 
 ## Table of Contents
 
