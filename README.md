@@ -60,16 +60,40 @@ gulp
 
 Deploying to Heroku requires a Heroku account and the Heroku toolbelt installed - [instructions here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
 
-Set up your Heroku app to use [this buildpack](https://github.com/evenemento/heroku-buildpack-nodejs-gulp-bower-sass) and the correct Node environment
+Log in to your account via the Heroku CLI
 
 ```sh
-heroku config:set BUILDPACK_URL=https://github.com/evenemento/heroku-buildpack-nodejs-gulp-bower-sass.git NODE_ENV=production
+heroku login
+```
+
+Create a new Heroku app in the root folder of your project, optionally specifying a name for your app.
+
+```sh
+heroku create app-name
+```
+
+Set up your Heroku app to use [this buildpack](https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass) and the correct Node environment
+
+```sh
+heroku config:set BUILDPACK_URL=https://github.com/OceanOracles/heroku-buildpack-nodejs-gulp-bower-sass.git NODE_ENV=production
 ```
 
 Add the MongoLab addon (this step will require a credit card on file)
 
 ```sh
 heroku addons:add mongolab
+```
+
+Check your config to make sure it has a BUILDPACK_URL, NODE_ENV, and MONGOLAB_URI
+
+```sh
+heroku config
+```
+
+Push up to master to deploy
+
+```sh
+git push heroku master
 ```
 
 ## Documentation
