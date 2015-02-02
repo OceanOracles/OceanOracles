@@ -6,6 +6,12 @@
 
     .nav-item {
       display: inline-block;
+
+      > .btn {
+        @media (max-width: 500px) {
+          font-size: $h6-font-size;
+        }
+      }
     }
   }
 }

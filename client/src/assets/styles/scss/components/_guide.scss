@@ -63,11 +63,25 @@
 
   .guide-p-title {
     color: $yellow;
+
+    @media (max-width: 750px) {
+      font-size: $h4-font-size;
+    }
   }
 
   .guide-p-author {
     text-transform: uppercase;
     color: white;
     @include margin(0);
+
+    @media (max-width: 750px) {
+      font-size: $h6-font-size;
+    }
+  }
+
+  @media (max-width: 950px) {
+    width: 100%;
+    float: none;
+    @include margin(0.75em 0);
   }
 }

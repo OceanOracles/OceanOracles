@@ -2,7 +2,11 @@
   @include position(relative, null 0 null 0);
   @include margin(null null 1.777em null);
   background: $dark-gray;
-  min-height: 400px;
+  min-height: 250px;
+  
+  @media (max-width: 750px) {
+    min-height: 200px;
+  }
 }
 
 .hero-inner {
@@ -13,11 +17,21 @@
   .hero-lead {
     color: $yellow;
     font-weight: 300;
+
+    @media (max-width: 750px) {
+      font-size: $h2-font-size;
+      line-height: 1.1;
+      @include margin(null null 0.15em 0);
+    }
   }
 
   .hero-tagline {
     font-size: $h4-font-size;
     color: white;
     text-transform: uppercase;
+
+    @media (max-width: 750px) {
+      font-size: $h5-font-size;
+    }
   }
 }
