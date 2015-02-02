@@ -135,67 +135,67 @@ will be run when a user tries to do an http method that needs to be authenticate
 
 API uri:
 
-'/api/guides'
+`/api/guides`
 
 #### Get all guides
 
 Make an HTTP request:
 
-'GET /api/guides/'
+`GET /api/guides/`
 
 #### Create a guide
 
 Make an HTTP request:
 
-'POST /api/guides/'
+`POST /api/guides/`
 
 #### Show a specific guide
 
 Make an HTTP request:
 
-'GET /api/guides/:guideId'
+`GET /api/guides/:guideId`
 
 #### Edit specific guide
 
 Make an HTTP request:
 
-'PUT /api/guides/:guideId'
+`PUT /api/guides/:guideId`
 
 #### Delete specific guide
 
 Make an HTTP request:
 
-'Delete /api/guides/:guideId'
+`Delete /api/guides/:guideId`
 
 #### Show a specific guide's steps
 
 Make an HTTP request:
 
-'GET /api/guides/:guideId/steps'
+`GET /api/guides/:guideId/steps`
 
 ### Steps
 
 API url:
 
-'/api/steps'
+`/api/steps`
 
 ### Create a step
 
 Make an HTTP request:
 
-'POST /api/steps/'
+`POST /api/steps/`
 
 ### Show a specific step
 
 Make an HTTP request:
 
-'POST /api/steps/:stepId'
+`POST /api/steps/:stepId`
 
 ### Edit a specific step
 
 Make an HTTP request:
 
-'PUT /api/steps/:stepId'
+`PUT /api/steps/:stepId`
 
 ## Roadmap
 
