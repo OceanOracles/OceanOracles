@@ -26,6 +26,9 @@
       color: $medium-gray;
     }
   }
+  @media (max-width: 500px) {
+    font-size: $h3-font-size;
+  }
 }
 
 /**
