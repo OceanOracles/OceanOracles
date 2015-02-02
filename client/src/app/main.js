@@ -1,3 +1,6 @@
+/**
+ * Template files located in client/src/templates
+ */
 var LernhowTemplates = [
   'GlobalNavView',
   'HomeView',
@@ -15,20 +18,20 @@ var LernhowTemplates = [
 var LernhowRouter = Backbone.Router.extend({
 
   routes: {
-    // static root
+    // Home page
     '': 'index',
 
-    // user authentication
+    // User authentication
     'signup': 'signup',
     'login': 'login',
     'logout': 'logout',
 
-    // guides CRUD
+    // Guides CRUD (minus Delete)
     'guides/new': 'newGuide',
     'guides/:guideId': 'viewGuide',
     'guides/:guideId/edit': 'editGuide',
 
-    // client-side catchall
+    // Client catchall
     '*nF': 'notFound'
   },
 
@@ -46,8 +49,8 @@ var LernhowRouter = Backbone.Router.extend({
     appUtils.swapView(this.homeView);
 
     this.guides.fetch({
-      success: function(c) {
-        this.guideListView = new GuideListView({ collection: c });
+      success: function(collection, models, req) {
+        this.guideListView = new GuideListView({ collection: collection });
         appUtils.swapView(this.guideListView, '.guide-previews-container');
       }
     })
@@ -71,8 +74,8 @@ var LernhowRouter = Backbone.Router.extend({
 
   viewGuide: function(guideId) {
     this.guides.fetch({
-      success: function(c) {
-        var guide = c.findWhere({ _id: guideId });
+      success: function(collection, models, req) {
+        var guide = collection.findWhere({ _id: guideId });
         guide.getGuideSteps(function(steps) {
           var userId = guide.get('userId');
           guide.set('steps', steps);
@@ -104,8 +107,8 @@ var LernhowRouter = Backbone.Router.extend({
       this.navigate('/');
     } else {
       this.guides.fetch({
-        success: function(collec, models, req) {
-          var guide = collec.findWhere({ _id: guideId });
+        success: function(collection, models, req) {
+          var guide = collection.findWhere({ _id: guideId });
           guide.getGuideSteps(function(steps) {
             guide.set('steps', steps);
             this.guideUpdateView = new GuideUpdateView({ model: guide });

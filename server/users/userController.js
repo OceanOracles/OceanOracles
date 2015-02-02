@@ -11,14 +11,14 @@ module.exports = {
 
     findUser({ username: username }).then(function(user) {
       if (!user) {
-        next(new Error('User does not exist'));
+        next({ status: 404, message: 'User name does not exist' });
       } else {
         return user.comparePassword(password).then(function(foundUser) {
           if (foundUser) {
             var token = jwt.encode(user, 'donotchangethissecret');
             res.json({ token: token, userId: user._id });
           } else {
-            return next(new Error('No user'));
+            return next({ status: 404, message: 'User not found' });
           }
         });
       }
@@ -35,7 +35,7 @@ module.exports = {
 
     findOne({ username: username }).then(function(user) {
       if (user) {
-        next(new Error('User already exists!'));
+        next({ status: 400, message: 'User name already exists' });
       } else {
         var create = Q.nbind(User.create, User);
         var newUser = { username: username, password: password, email: email };
@@ -49,10 +49,11 @@ module.exports = {
     });
   },
 
+  // Authentication middleware to protect private routes
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];
     if (!token) {
-      next(new Error('No token'));
+      next({ status: 401, message: 'User not authorized to request this resource' });
     } else {
       var user = jwt.decode(token, 'donotchangethissecret');
       var findUser = Q.nbind(User.findOne, User);
