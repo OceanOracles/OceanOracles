@@ -102,7 +102,86 @@ git push heroku master
 
 ## Documentation
 
-API docs can be found [here](http://oceanoracles.github.io/lernhow-docs/)
+Lernhow is mostly a client side app and has a fairly simple API.
+
+### Users
+
+API uri:
+'/api/users'
+
+#### Signup user
+
+Make an HTTP request:
+`POST /api/users/signup`
+
+#### Login user
+
+Make an HTTP request:
+`POST /api/users/login`
+
+#### Authentication for user
+
+Lernhow uses [Json Web Tokens](http://jwt.io/) to authenticate users.
+When users login or signup they are given a web token, which they then send through the headers to the lernhow API whenever they make a request.
+
+The HTTP request of:
+'POST /api/users/auth'
+Will be run when a user tries to do an http method that needs to be authenticated.
+
+### Guides
+
+API uri:
+'/api/guides'
+
+#### Get all guides
+
+Make an HTTP request:
+'GET /api/guides/'
+
+#### Create a guide
+
+Make an HTTP request:
+'POST /api/guides/'
+
+#### Show a specific guide
+
+Make an HTTP request:
+'GET /api/guides/:guideId'
+
+#### Edit specific guide
+
+Make an HTTP request:
+'PUT /api/guides/:guideId'
+
+#### Delete specific guide
+
+Make an HTTP request:
+'Delete /api/guides/:guideId'
+
+#### Show a specific guide's steps
+
+Make an HTTP request:
+'GET /api/guides/:guideId/steps'
+
+### Steps
+
+API url:
+'/api/steps'
+
+### Create a step
+
+Make an HTTP request:
+'POST /api/steps/'
+
+### Show a specific step
+
+Make an HTTP request:
+'POST /api/steps/:stepId'
+
+### Edit a specific step
+
+Make an HTTP request:
+'PUT /api/steps/:stepId'
 
 ## Roadmap
 
