@@ -11,9 +11,9 @@ No more searching sprawling wikis for what you need. Avoid all the useless infor
     1. [Installing Dependencies](#installing-dependencies)
     1. [Running the Server](#running-the-server)
 1. [Deployment](#deployment)
-1. [Documentation](#documentation)
-1. [Roadmap](#roadmap)
-1. [Team](#team)
+1. [Documentation](#lernhow-api-documentation)
+1. [Roadmap](#product-roadmap)
+1. [Team](#lernhow-team)
 1. [Contributing](#contributing)
 
 ---
